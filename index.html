@@ -21,7 +21,6 @@
             newImage.src = images[currentImageIndex];
 
             newImage.onload = () => {
-                // Fade out the current image
                 const fadeOut = imageElement.animate([
                     { opacity: 1 },
                     { opacity: 0 }
@@ -33,7 +32,6 @@
                 fadeOut.onfinish = function() {
                     imageElement.src = newImage.src;
 
-                    // Fade in the new image
                     const fadeIn = imageElement.animate([
                         { opacity: 0 },
                         { opacity: 1 }
@@ -72,24 +70,33 @@
     </script>
 </head>
 <body bgcolor="#f7f7f7" text="#333">
-    <center>
-        <h1>Welcome to Landon's Website!</h1>
-        <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
-        <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+    <header>
+        <h1 style="text-align: center;">Welcome to Landon's Website!</h1>
+    </header>
 
-        <!-- Slideshow Image -->
-        <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
-            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="250">
-        </div>
+    <main>
+        <section style="text-align: center;">
+            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
+            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+        </section>
 
-        <!-- Slideshow Buttons -->
-        <div>
-            <button id="prevButton" onclick="changeImage(-1)" disabled>Previous</button>
-            <button id="nextButton" onclick="changeImage(1)">Next</button>
-        </div>
+        <section style="text-align: center;">
+            <!-- Slideshow Image -->
+            <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="250">
+            </div>
 
-        <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
-        <p>Have a great day, and see you soon!</p>
-    </center>
+            <!-- Slideshow Buttons -->
+            <div>
+                <button id="prevButton" onclick="changeImage(-1)" disabled>Previous</button>
+                <button id="nextButton" onclick="changeImage(1)">Next</button>
+            </div>
+        </section>
+
+        <section style="text-align: center;">
+            <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
+            <p>Have a great day, and see you soon!</p>
+        </section>
+    </main>
 </body>
 </html>
