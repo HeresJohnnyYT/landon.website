@@ -15,14 +15,47 @@
 
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
+            const newImage = new Image();
+
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            imageElement.src = images[currentImageIndex];
+            newImage.src = images[currentImageIndex];
+
+            newImage.onload = () => {
+                // Fade out the current image
+                const fadeOut = imageElement.animate([
+                    { opacity: 1 },
+                    { opacity: 0 }
+                ], {
+                    duration: 500,
+                    fill: 'forwards'
+                });
+
+                fadeOut.onfinish = function() {
+                    imageElement.src = newImage.src;
+
+                    // Fade in the new image
+                    const fadeIn = imageElement.animate([
+                        { opacity: 0 },
+                        { opacity: 1 }
+                    ], {
+                        duration: 500,
+                        fill: 'forwards'
+                    });
+                };
+            };
+
+            updateButtons();
+        }
+
+        function updateButtons() {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            prevButton.disabled = currentImageIndex === 0;
+            nextButton.disabled = currentImageIndex === images.length - 1;
         }
 
         window.onload = function() {
-            setInterval(() => {
-                changeImage(1); // Automatically move to the next image every 3 seconds
-            }, 3000);
+            changeImage(0);
         };
 
         document.addEventListener('keydown', function(event) {
@@ -32,21 +65,23 @@
         });
     </script>
 </head>
-<body style="background-color: #f7f7f7; font-family: 'Verdana', sans-serif; color: #333; text-align: center;">
-    <h1 style="color: #000080;">Welcome to Landon's Website!</h1>
-    <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
-    <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+<body bgcolor="#f7f7f7" text="#333">
+    <center>
+        <h1>Welcome to Landon's Website!</h1>
+        <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
+        <p>This is a special place where I can show you some pictures of my favorite moments!</p>
 
-    <!-- Slideshow Image -->
-    <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="250" style="border: 1px solid #000; margin: 10px;">
+        <!-- Slideshow Image -->
+        <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="250">
 
-    <!-- Manual Navigation -->
-    <div>
-        <button onclick="changeImage(-1)" style="margin: 5px; padding: 10px; background-color: #ccc; border: 1px solid #000;">Previous</button>
-        <button onclick="changeImage(1)" style="margin: 5px; padding: 10px; background-color: #ccc; border: 1px solid #000;">Next</button>
-    </div>
+        <!-- Slideshow Buttons -->
+        <div>
+            <button id="prevButton" onclick="changeImage(-1)" disabled>Previous</button>
+            <button id="nextButton" onclick="changeImage(1)">Next</button>
+        </div>
 
-    <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
-    <p>Have a great day, and see you soon!</p>
+        <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
+        <p>Have a great day, and see you soon!</p>
+    </center>
 </body>
 </html>
