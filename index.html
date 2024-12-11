@@ -6,46 +6,89 @@
     <title>Landon's Website</title>
     <style>
         body {
-            background-color: #f7f7f7;
-            color: #000;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            filter: grayscale(100%);
+            background-color: #f0f0f0;
+            font-family: "Arial", sans-serif;
+            color: #000000;
+            margin: 20px;
         }
 
-        main {
+        h1 {
+            font-size: 36px;
+            color: #000000;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #000000;
+        }
+
+        p {
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        img {
+            border: 3px solid #000000;
+            width: 250px;
+            height: auto;
+            margin: 10px;
+        }
+
+        .button-container {
+            text-align: center;
             margin-top: 20px;
         }
 
-        section {
-            margin-bottom: 30px;
-        }
-
         button {
+            font-size: 14px;
+            padding: 10px 20px;
+            margin: 5px;
+            border: 1px solid #000;
             background-color: #fff;
             color: #000;
-            border: 1px solid #000;
-            padding: 10px 20px;
             cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
         }
 
         button:disabled {
-            background-color: #ccc;
+            background-color: #ddd;
             cursor: not-allowed;
         }
 
-        #landonImage {
-            border: 5px solid #000;
-            padding: 10px;
-            filter: none; /* This restores the color to the images */
-        }
-
-        #slideIndicator, #countdown {
+        .navigation {
             font-size: 18px;
+            text-align: center;
         }
     </style>
+</head>
+<body>
+    <h1>Welcome to Landon's Website</h1>
+    <h2>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</h2>
+    <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+
+    <div class="image-container">
+        <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
+    </div>
+
+    <div class="navigation">
+        <p id="slideIndicator">Slide 1 of 3</p>
+        <p id="countdown">Next slide in: 3</p>
+    </div>
+
+    <div class="button-container">
+        <button id="prevButton" onclick="changeImage(-1)">Previous</button>
+        <button id="nextButton" onclick="changeImage(1)">Next</button>
+        <button id="directionButton" onclick="toggleAutoPlayDirection()">Play Forward</button>
+        <button onclick="randomSlide()">Random Slide</button>
+    </div>
+
+    <p>Use Arrow keys to navigate, press the Spacebar to pause/resume auto-play, or click the buttons above.</p>
+    <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
+    <p>Have a great day, and see you soon!</p>
+
     <script>
         let images = [
             "https://myschief.net/landon.jpg",
@@ -173,40 +216,5 @@
             }
         });
     </script>
-</head>
-<body>
-    <main>
-        <section>
-            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
-            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
-        </section>
-
-        <section>
-            <!-- Slideshow Image -->
-            <div>
-                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="250">
-            </div>
-
-            <!-- Slideshow Buttons -->
-            <div>
-                <button id="prevButton" onclick="changeImage(-1)">Previous</button>
-                <button id="nextButton" onclick="changeImage(1)">Next</button>
-                <button id="directionButton" onclick="toggleAutoPlayDirection()">Play Forward</button>
-                <button onclick="randomSlide()">Random Slide</button>
-            </div>
-
-            <!-- Slideshow Indicator -->
-            <p id="slideIndicator">Slide 1 of 3</p>
-            <p id="countdown">Next slide in: 3</p>
-
-            <!-- Auto-play Instructions -->
-            <p>Use Arrow keys to navigate, press the Spacebar to pause/resume auto-play, or click the buttons above.</p>
-        </section>
-
-        <section>
-            <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
-            <p>Have a great day, and see you soon!</p>
-        </section>
-    </main>
 </body>
 </html>
