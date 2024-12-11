@@ -16,14 +16,31 @@
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
             const newImage = new Image();
-            
+
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            
+
             newImage.src = images[currentImageIndex];
 
             newImage.onload = () => {
-                // Directly update the image source without fade effect
-                imageElement.src = newImage.src;
+                // Slide transition effect
+                const slideEffect = imageElement.animate([
+                    { transform: 'translateX(0)' },
+                    { transform: 'translateX(-100%)' }
+                ], {
+                    duration: 500,
+                    fill: 'forwards'
+                });
+
+                slideEffect.onfinish = () => {
+                    imageElement.src = newImage.src;
+                    imageElement.animate([
+                        { transform: 'translateX(100%)' },
+                        { transform: 'translateX(0)' }
+                    ], {
+                        duration: 500,
+                        fill: 'forwards'
+                    });
+                };
             };
 
             updateButtons();
