@@ -8,66 +8,80 @@
     <style>
         body {
             margin: 0;
+            padding: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
             font-family: Arial, sans-serif;
             text-align: center;
-            font-size: 14px; /* Smaller font size for better fitting */
-            line-height: 1.4;
+            font-size: 12px;
+            overflow: hidden;
         }
 
         h1 {
-            font-size: 2rem; /* Adjust font size for better fitting */
+            font-size: 18px;
             font-weight: bold;
-            word-wrap: break-word;
+            margin: 0;
+            padding: 0;
         }
 
         h2 {
-            font-size: 1.5rem; /* Adjust font size for better fitting */
-            font-weight: bold;
-            word-wrap: break-word;
+            font-size: 14px;
+            margin: 10px 0;
+            padding: 0;
         }
 
         p {
-            font-size: 1.2rem; /* Adjust font size for readability */
+            font-size: 10px;
+            margin: 10px 0;
         }
 
-        #landonImage {
+        img {
             max-width: 100%;
-            max-height: 300px; /* Adjust max-height to fit better */
-            margin: 20px 0;
+            height: auto;
+            max-height: 250px;
+            margin-top: 15px;
         }
 
         button {
+            font-size: 12px;
+            padding: 8px 16px;
             margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
             cursor: pointer;
         }
 
         #countdown {
-            margin-top: 20px;
-            font-size: 16px;
+            font-size: 12px;
+            margin-top: 10px;
         }
 
-        strong {
-            font-weight: bold;
+        .content {
+            max-width: 320px;
+            width: 100%;
+            margin: 10px;
         }
+
+        #prevButton, #nextButton {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        #directionButton, #randomSlideButton {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
-    <div>
+    <div class="content">
         <h1><strong>Welcome to Landon's Website</strong></h1>
         <h2>Hi! I'm Landon, <strong>8 years old</strong>, and I'm excited to share my creativity with you!</h2>
         <p>This is a special place where I can show you some pictures of my favorite moments!</p>
 
-        <div>
-            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
-        </div>
+        <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
 
         <div>
             <p id="slideIndicator">Slide 1 of 3</p>
@@ -78,7 +92,7 @@
             <button id="prevButton" onclick="changeImage(-1)">Previous</button>
             <button id="nextButton" onclick="changeImage(1)">Next</button>
             <button id="directionButton" onclick="toggleAutoPlayDirection()">Play Forward</button>
-            <button onclick="randomSlide()">Random Slide</button>
+            <button id="randomSlideButton" onclick="randomSlide()">Random Slide</button>
         </div>
 
         <p>Use Arrow keys to navigate, press the Spacebar to pause/resume auto-play, or click the buttons above.</p>
