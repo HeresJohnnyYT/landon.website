@@ -12,6 +12,7 @@
         ];
 
         let currentImageIndex = 0;
+        let autoPlayInterval;
 
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
@@ -42,6 +43,7 @@
                 };
             };
 
+            updateIndicators();
             updateButtons();
         }
 
@@ -52,10 +54,25 @@
             nextButton.disabled = currentImageIndex === images.length - 1;
         }
 
+        function updateIndicators() {
+            const indicator = document.getElementById('slideIndicator');
+            indicator.textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => changeImage(1), 3000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
         window.onload = function() {
             const imageElement = document.getElementById('landonImage');
             imageElement.src = images[currentImageIndex];
+            updateIndicators();
             updateButtons();
+            startAutoPlay();
         };
 
         document.addEventListener('keydown', function(event) {
@@ -63,8 +80,16 @@
                 alert("Thanks for visiting my webpage!");
             } else if (event.key === 'ArrowLeft') {
                 changeImage(-1);
+                stopAutoPlay();
             } else if (event.key === 'ArrowRight') {
                 changeImage(1);
+                stopAutoPlay();
+            } else if (event.key === ' ') {
+                if (autoPlayInterval) {
+                    stopAutoPlay();
+                } else {
+                    startAutoPlay();
+                }
             }
         });
     </script>
@@ -88,9 +113,15 @@
 
             <!-- Slideshow Buttons -->
             <div>
-                <button id="prevButton" onclick="changeImage(-1)" disabled>Previous</button>
+                <button id="prevButton" onclick="changeImage(-1)">Previous</button>
                 <button id="nextButton" onclick="changeImage(1)">Next</button>
             </div>
+
+            <!-- Slideshow Indicator -->
+            <p id="slideIndicator">Slide 1 of 3</p>
+
+            <!-- Auto-play Instructions -->
+            <p>Use Arrow keys to navigate, or press the Spacebar to pause/resume auto-play.</p>
         </section>
 
         <section style="text-align: center;">
