@@ -18,24 +18,25 @@
             const newImage = new Image();
 
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-
             newImage.src = images[currentImageIndex];
 
             newImage.onload = () => {
-                // Slide transition effect
-                const slideEffect = imageElement.animate([
-                    { transform: 'translateX(0)' },
-                    { transform: 'translateX(-100%)' }
+                // Fade out the current image
+                const fadeOut = imageElement.animate([
+                    { opacity: 1 },
+                    { opacity: 0 }
                 ], {
                     duration: 500,
                     fill: 'forwards'
                 });
 
-                slideEffect.onfinish = () => {
+                fadeOut.onfinish = function() {
                     imageElement.src = newImage.src;
-                    imageElement.animate([
-                        { transform: 'translateX(100%)' },
-                        { transform: 'translateX(0)' }
+
+                    // Fade in the new image
+                    const fadeIn = imageElement.animate([
+                        { opacity: 0 },
+                        { opacity: 1 }
                     ], {
                         duration: 500,
                         fill: 'forwards'
