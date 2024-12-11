@@ -15,34 +15,9 @@
 
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
-            const newImage = new Image();
 
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            newImage.src = images[currentImageIndex];
-
-            newImage.onload = () => {
-                // Fade out the current image
-                const fadeOut = imageElement.animate([
-                    { opacity: 1 },
-                    { opacity: 0 }
-                ], {
-                    duration: 500,
-                    fill: 'forwards'
-                });
-
-                fadeOut.onfinish = function() {
-                    imageElement.src = newImage.src;
-
-                    // Fade in the new image
-                    const fadeIn = imageElement.animate([
-                        { opacity: 0 },
-                        { opacity: 1 }
-                    ], {
-                        duration: 500,
-                        fill: 'forwards'
-                    });
-                };
-            };
+            imageElement.src = images[currentImageIndex];
 
             updateButtons();
         }
