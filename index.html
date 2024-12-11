@@ -13,6 +13,9 @@
 
         let currentImageIndex = 0;
         let autoPlayInterval;
+        let autoPlayDirection = 1;
+        let countdownTimer;
+        let countdownValue = 3;
 
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
@@ -45,6 +48,7 @@
 
             updateIndicators();
             updateButtons();
+            resetCountdown();
         }
 
         function updateButtons() {
@@ -60,11 +64,45 @@
         }
 
         function startAutoPlay() {
-            autoPlayInterval = setInterval(() => changeImage(1), 3000);
+            stopAutoPlay();
+            autoPlayInterval = setInterval(() => changeImage(autoPlayDirection), 3000);
+            resetCountdown();
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
+            clearInterval(countdownTimer);
+            document.getElementById('countdown').textContent = '';
+        }
+
+        function toggleAutoPlayDirection() {
+            autoPlayDirection *= -1;
+            const directionButton = document.getElementById('directionButton');
+            directionButton.textContent = autoPlayDirection === 1 ? "Play Forward" : "Play Backward";
+            startAutoPlay();
+        }
+
+        function randomSlide() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            if (randomIndex !== currentImageIndex) {
+                changeImage(randomIndex - currentImageIndex);
+            } else {
+                randomSlide();
+            }
+        }
+
+        function resetCountdown() {
+            clearInterval(countdownTimer);
+            countdownValue = 3;
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.textContent = `Next slide in: ${countdownValue}`;
+            countdownTimer = setInterval(() => {
+                countdownValue--;
+                if (countdownValue <= 0) {
+                    countdownValue = 3;
+                }
+                countdownElement.textContent = `Next slide in: ${countdownValue}`;
+            }, 1000);
         }
 
         window.onload = function() {
@@ -115,13 +153,16 @@
             <div>
                 <button id="prevButton" onclick="changeImage(-1)">Previous</button>
                 <button id="nextButton" onclick="changeImage(1)">Next</button>
+                <button id="directionButton" onclick="toggleAutoPlayDirection()">Play Forward</button>
+                <button onclick="randomSlide()">Random Slide</button>
             </div>
 
             <!-- Slideshow Indicator -->
             <p id="slideIndicator">Slide 1 of 3</p>
+            <p id="countdown">Next slide in: 3</p>
 
             <!-- Auto-play Instructions -->
-            <p>Use Arrow keys to navigate, or press the Spacebar to pause/resume auto-play.</p>
+            <p>Use Arrow keys to navigate, press the Spacebar to pause/resume auto-play, or click the buttons above.</p>
         </section>
 
         <section style="text-align: center;">
