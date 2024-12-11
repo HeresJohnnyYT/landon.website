@@ -5,144 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Landon's Website</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #fafafa;
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
-        }
-
-        h1 {
-            font-size: 48px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 24px;
-            color: #555;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        .image-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .navigation {
-            margin-bottom: 30px;
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-            color: #444;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        button {
-            padding: 12px 24px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        button:disabled {
-            background-color: #ddd;
-            cursor: not-allowed;
-        }
-
-        .footer {
-            text-align: center;
-            color: #999;
-            font-size: 14px;
-            margin-top: 30px;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            p {
-                font-size: 14px;
-            }
-
-            button {
-                font-size: 14px;
-                padding: 10px 20px;
-            }
-        }
-    </style>
 </head>
 <body>
     <h1>Welcome to Landon's Website</h1>
     <h2>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</h2>
     <p>This is a special place where I can show you some pictures of my favorite moments!</p>
 
-    <div class="image-container">
-        <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
+    <div>
+        <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="500">
     </div>
 
-    <div class="navigation">
+    <div>
         <p id="slideIndicator">Slide 1 of 3</p>
         <p id="countdown">Next slide in: 3</p>
     </div>
 
-    <div class="button-container">
+    <div>
         <button id="prevButton" onclick="changeImage(-1)">Previous</button>
         <button id="nextButton" onclick="changeImage(1)">Next</button>
         <button id="directionButton" onclick="toggleAutoPlayDirection()">Play Forward</button>
@@ -153,7 +31,7 @@
     <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
     <p>Have a great day, and see you soon!</p>
 
-    <div class="footer">
+    <div>
         <p>&copy; 2024 Landon's Website. All Rights Reserved.</p>
     </div>
 
@@ -178,25 +56,7 @@
             newImage.src = images[currentImageIndex];
 
             newImage.onload = () => {
-                const fadeOut = imageElement.animate([
-                    { opacity: 1 },
-                    { opacity: 0 }
-                ], {
-                    duration: 500,
-                    fill: 'forwards'
-                });
-
-                fadeOut.onfinish = function() {
-                    imageElement.src = newImage.src;
-
-                    const fadeIn = imageElement.animate([
-                        { opacity: 0 },
-                        { opacity: 1 }
-                    ], {
-                        duration: 500,
-                        fill: 'forwards'
-                    });
-                };
+                imageElement.src = newImage.src;
             };
 
             updateIndicators();
