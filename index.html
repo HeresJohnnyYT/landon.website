@@ -92,17 +92,6 @@
                 }
             }
         });
-
-        function showFunFact() {
-            const facts = [
-                "Landon loves dinosaurs!",
-                "Landon's favorite color is blue!",
-                "Landon enjoys building LEGO creations!",
-                "Landon is learning how to code!"
-            ];
-            const randomFact = facts[Math.floor(Math.random() * facts.length)];
-            alert(randomFact);
-        }
     </script>
 </head>
 <body bgcolor="#f7f7f7" text="#333">
@@ -136,17 +125,29 @@
         </section>
 
         <section style="text-align: center; margin-top: 20px;">
-            <button onclick="showFunFact()">Click for a Fun Fact About Landon!</button>
+            <h2>Activities Landon Loves</h2>
+            <ul style="list-style-type: disc; margin: 0 auto; padding: 0; width: fit-content; text-align: left;">
+                <li>Exploring nature with his family</li>
+                <li>Watching animated movies</li>
+                <li>Playing board games like Monopoly</li>
+                <li>Learning how to bake cookies</li>
+            </ul>
         </section>
 
         <section style="text-align: center; margin-top: 20px;">
-            <h2>More About Landon</h2>
-            <ul style="list-style-type: none; padding: 0;">
-                <li>Loves playing soccer with friends</li>
-                <li>Enjoys reading adventure books</li>
-                <li>Favorite food: Spaghetti</li>
-                <li>Dreams of becoming a scientist</li>
-            </ul>
+            <h2>Contact Landon</h2>
+            <form>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="message">Your Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="30" required></textarea><br><br>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <section style="text-align: center; margin-top: 20px;">
+            <h2>Daily Update</h2>
+            <p id="dailyUpdate">Today's special message: "Be kind and enjoy every moment!"</p>
         </section>
 
         <section style="text-align: center;">
