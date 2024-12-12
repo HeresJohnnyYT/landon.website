@@ -15,6 +15,23 @@
         let autoPlayInterval;
 
         function changeImage(direction) {
+            const imageEleme<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landon's Website</title>
+    <script>
+        let images = [
+            "https://myschief.net/landon.jpg",
+            "https://myschief.net/landon2.jpg",
+            "https://myschief.net/landon3.jpg"
+        ];
+
+        let currentImageIndex = 0;
+        let autoPlayInterval;
+
+        function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
             const newImage = new Image();
 
@@ -99,12 +116,14 @@
         <h1 style="text-align: center;">Welcome to Landon's Website!</h1>
     </header>
 
+    <!-- Section Divider -->
     <main>
         <section style="text-align: center;">
             <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
             <p>This is a special place where I can show you some pictures of my favorite moments!</p>
         </section>
 
+        <!-- Section Divider -->
         <section style="text-align: center;">
             <!-- Slideshow Image -->
             <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
@@ -124,20 +143,30 @@
             <p>Use Arrow keys to navigate, or press the Spacebar to pause/resume auto-play.</p>
         </section>
 
+        <!-- Section Divider -->
         <section style="text-align: center; margin-top: 20px;">
             <h2>Contact Landon</h2>
-            <button onclick="window.location.href='mailto:contact@landon.website';">Email Landon</button>
+            <button onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
         </section>
 
+        <!-- Section Divider -->
         <section style="text-align: center; margin-top: 20px;">
             <h2>Daily Update</h2>
             <p id="dailyUpdate">Today's special message: "Be kind and enjoy every moment!"</p>
         </section>
 
+        <!-- Section Divider -->
         <section style="text-align: center;">
             <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
             <p>Have a great day, and see you soon!</p>
         </section>
+
+        <!-- Additional Padding for Length -->
+        <section style="height: 100px;"></section>
+        <section style="height: 100px;"></section>
+        <section style="height: 100px;"></section>
+        <section style="height: 100px;"></section>
+        <section style="height: 100px;"></section>
     </main>
 </body>
 </html>
