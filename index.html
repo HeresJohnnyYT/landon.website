@@ -3,105 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Landon's Website</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            font-size: 14px;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        p {
-            font-size: 14px;
-            margin: 10px 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            max-height: 350px;
-            margin-top: 15px;
-        }
-
-        button {
-            font-size: 14px;
-            padding: 8px 16px;
-            margin: 5px;
-            cursor: pointer;
-        }
-
-        #countdown {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        .content {
-            max-width: 400px;
-            width: 100%;
-            margin: 10px;
-        }
-
-        #prevButton, #nextButton {
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        #directionButton, #randomSlideButton {
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-    </style>
-</head>
-<body>
-    <div class="content">
-        <h1><strong>Welcome to Landon's Website</strong></h1>
-        <h2>Hi! I'm Landon, <strong>8 years old</strong>, and I'm excited to share my creativity with you!</h2>
-        <p>This is a special place where I can show you some pictures of my favorite moments!</p>
-
-        <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
-
-        <div>
-            <p id="slideIndicator">Slide 1 of 3</p>
-            <p id="countdown">Next slide in: 3</p>
-        </div>
-
-        <div>
-            <button id="prevButton" onclick="changeImage(-1)">Previous</button>
-            <button id="nextButton" onclick="changeImage(1)">Next</button>
-            <button id="directionButton" onclick="toggleAutoPlayDirection()">Play Forward</button>
-            <button id="randomSlideButton" onclick="randomSlide()">Random Slide</button>
-        </div>
-
-        <p>Use Arrow keys to navigate, press the Spacebar to pause/resume auto-play, or click the buttons above.</p>
-        <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
-        <p>Have a great day, and see you soon!</p>
-
-        <div>
-            <p>&copy; 2024 Landon's Website. All Rights Reserved.</p>
-        </div>
-    </div>
-
     <script>
         let images = [
             "https://myschief.net/landon.jpg",
@@ -111,9 +13,6 @@
 
         let currentImageIndex = 0;
         let autoPlayInterval;
-        let autoPlayDirection = 1;
-        let countdownTimer;
-        let countdownValue = 3;
 
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
@@ -123,12 +22,29 @@
             newImage.src = images[currentImageIndex];
 
             newImage.onload = () => {
-                imageElement.src = newImage.src;
+                const fadeOut = imageElement.animate([
+                    { opacity: 1 },
+                    { opacity: 0 }
+                ], {
+                    duration: 500,
+                    fill: 'forwards'
+                });
+
+                fadeOut.onfinish = function() {
+                    imageElement.src = newImage.src;
+
+                    const fadeIn = imageElement.animate([
+                        { opacity: 0 },
+                        { opacity: 1 }
+                    ], {
+                        duration: 500,
+                        fill: 'forwards'
+                    });
+                };
             };
 
             updateIndicators();
             updateButtons();
-            resetCountdown();
         }
 
         function updateButtons() {
@@ -144,45 +60,11 @@
         }
 
         function startAutoPlay() {
-            stopAutoPlay();
-            autoPlayInterval = setInterval(() => changeImage(autoPlayDirection), 3000);
-            resetCountdown();
+            autoPlayInterval = setInterval(() => changeImage(1), 3000);
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
-            clearInterval(countdownTimer);
-            document.getElementById('countdown').textContent = '';
-        }
-
-        function toggleAutoPlayDirection() {
-            autoPlayDirection *= -1;
-            const directionButton = document.getElementById('directionButton');
-            directionButton.textContent = autoPlayDirection === 1 ? "Play Forward" : "Play Backward";
-            startAutoPlay();
-        }
-
-        function randomSlide() {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            if (randomIndex !== currentImageIndex) {
-                changeImage(randomIndex - currentImageIndex);
-            } else {
-                randomSlide();
-            }
-        }
-
-        function resetCountdown() {
-            clearInterval(countdownTimer);
-            countdownValue = 3;
-            const countdownElement = document.getElementById('countdown');
-            countdownElement.textContent = `Next slide in: ${countdownValue}`;
-            countdownTimer = setInterval(() => {
-                countdownValue--;
-                if (countdownValue <= 0) {
-                    countdownValue = 3;
-                }
-                countdownElement.textContent = `Next slide in: ${countdownValue}`;
-            }, 1000);
         }
 
         window.onload = function() {
@@ -210,6 +92,67 @@
                 }
             }
         });
+
+        function showFunFact() {
+            const facts = [
+                "Landon loves dinosaurs!",
+                "Landon's favorite color is blue!",
+                "Landon enjoys building LEGO creations!",
+                "Landon is learning how to code!"
+            ];
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            alert(randomFact);
+        }
     </script>
+</head>
+<body bgcolor="#f7f7f7" text="#333">
+    <header>
+        <h1 style="text-align: center;">Welcome to Landon's Website!</h1>
+    </header>
+
+    <main>
+        <section style="text-align: center;">
+            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
+            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+        </section>
+
+        <section style="text-align: center;">
+            <!-- Slideshow Image -->
+            <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="250">
+            </div>
+
+            <!-- Slideshow Buttons -->
+            <div>
+                <button id="prevButton" onclick="changeImage(-1)">Previous</button>
+                <button id="nextButton" onclick="changeImage(1)">Next</button>
+            </div>
+
+            <!-- Slideshow Indicator -->
+            <p id="slideIndicator">Slide 1 of 3</p>
+
+            <!-- Auto-play Instructions -->
+            <p>Use Arrow keys to navigate, or press the Spacebar to pause/resume auto-play.</p>
+        </section>
+
+        <section style="text-align: center; margin-top: 20px;">
+            <button onclick="showFunFact()">Click for a Fun Fact About Landon!</button>
+        </section>
+
+        <section style="text-align: center; margin-top: 20px;">
+            <h2>More About Landon</h2>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>Loves playing soccer with friends</li>
+                <li>Enjoys reading adventure books</li>
+                <li>Favorite food: Spaghetti</li>
+                <li>Dreams of becoming a scientist</li>
+            </ul>
+        </section>
+
+        <section style="text-align: center;">
+            <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
+            <p>Have a great day, and see you soon!</p>
+        </section>
+    </main>
 </body>
 </html>
