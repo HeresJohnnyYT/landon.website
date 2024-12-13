@@ -50,8 +50,11 @@
         function updateButtons() {
             const playButton = document.getElementById('playButton');
             const resumeButton = document.getElementById('resumeButton');
+            const stopButton = document.getElementById('stopButton');
+
             playButton.disabled = autoPlayInterval !== undefined;
             resumeButton.disabled = autoPlayInterval === undefined;
+            stopButton.disabled = autoPlayInterval === undefined;
         }
 
         function updateIndicators() {
@@ -98,6 +101,7 @@
     <div align="center">
         <button id="playButton" onclick="startAutoPlay()">Play</button>
         <button id="resumeButton" onclick="startAutoPlay()">Resume</button>
+        <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
     </div>
 
     <p align="center" id="slideIndicator">Slide 1 of 3</p>
