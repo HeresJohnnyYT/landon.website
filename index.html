@@ -53,7 +53,7 @@
             const stopButton = document.getElementById('stopButton');
 
             playButton.disabled = autoPlayInterval !== undefined;
-            resumeButton.disabled = autoPlayInterval === undefined;
+            resumeButton.disabled = autoPlayInterval !== undefined;
             stopButton.disabled = autoPlayInterval === undefined;
         }
 
