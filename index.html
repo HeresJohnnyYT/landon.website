@@ -48,10 +48,10 @@
         }
 
         function updateButtons() {
-            const prevButton = document.getElementById('prevButton');
-            const nextButton = document.getElementById('nextButton');
-            prevButton.disabled = currentImageIndex === 0;
-            nextButton.disabled = currentImageIndex === images.length - 1;
+            const playButton = document.getElementById('playButton');
+            const resumeButton = document.getElementById('resumeButton');
+            playButton.disabled = autoPlayInterval !== undefined;
+            resumeButton.disabled = autoPlayInterval === undefined;
         }
 
         function updateIndicators() {
@@ -61,10 +61,13 @@
 
         function startAutoPlay() {
             autoPlayInterval = setInterval(() => changeImage(1), 3000);
+            updateButtons();
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
+            autoPlayInterval = undefined;
+            updateButtons();
         }
 
         window.onload = function() {
@@ -72,26 +75,7 @@
             imageElement.src = images[currentImageIndex];
             updateIndicators();
             updateButtons();
-            startAutoPlay();
         };
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'e' || event.key === 'E') {
-                alert("Thanks for visiting my webpage!");
-            } else if (event.key === 'ArrowLeft') {
-                changeImage(-1);
-                stopAutoPlay();
-            } else if (event.key === 'ArrowRight') {
-                changeImage(1);
-                stopAutoPlay();
-            } else if (event.key === ' ') {
-                if (autoPlayInterval) {
-                    stopAutoPlay();
-                } else {
-                    startAutoPlay();
-                }
-            }
-        });
     </script>
 </head>
 <body bgcolor="#f7f7f7" text="#333">
@@ -112,13 +96,11 @@
     </div>
 
     <div align="center">
-        <button id="prevButton" onclick="changeImage(-1)">Previous</button>
-        <button id="nextButton" onclick="changeImage(1)">Next</button>
+        <button id="playButton" onclick="startAutoPlay()">Play</button>
+        <button id="resumeButton" onclick="startAutoPlay()">Resume</button>
     </div>
 
     <p align="center" id="slideIndicator">Slide 1 of 3</p>
-
-    <p align="center">Use the Arrow keys to navigate, or press the Spacebar to pause/resume auto-play.</p>
 
     <div align="center">
         <h2>Contact Landon</h2>
