@@ -29,11 +29,17 @@
             border: 2px solid #333;
             padding: 15px;
             margin-bottom: 20px;
+            max-width: 100%;
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            height: 400px; /* Set a fixed height */
         }
 
         img {
-            width: 250px;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 8px;
             transition: transform 0.3s ease-in-out;
         }
@@ -87,6 +93,12 @@
             font-size: 1em;
             max-width: 600px;
             margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -95,7 +107,7 @@
         <h1>Landon's Website</h1>
     </header>
 
-    <main>
+    <main class="main-content">
         <section>
             <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
             <p>This is a special place where I can show you some pictures of my favorite moments!</p>
