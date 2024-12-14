@@ -4,6 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            display: inline-block;
+            border: 2px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .buttons-container {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #FF0000;
+            color: white;
+            font-size: 16px;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #slideIndicator {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .email-button {
+            background-color: #0066cc;
+        }
+
+        .email-button:hover {
+            background-color: #005bb5;
+        }
+
+        p {
+            color: #333;
+            font-size: 1em;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -11,6 +96,11 @@
     </header>
 
     <main>
+        <section>
+            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
+            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+        </section>
+
         <section>
             <div class="content-box">
                 <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
