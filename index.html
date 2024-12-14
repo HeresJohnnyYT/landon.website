@@ -8,101 +8,102 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            text-align: center;
-            flex-direction: column;
+            font-family: Arial, sans-serif;
         }
 
-        header, footer {
-            font-size: 14px;
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 15px 0;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            margin: 0;
         }
 
         main {
-            width: 90%;
-            max-width: 480px;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
         img {
             width: 100%;
-            height: auto;
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
 
         button {
-            padding: 6px 12px;
-            margin: 5px;
-            font-size: 12px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #0056b3;
-            color: white;
+            background-color: #0057a2;
         }
 
-        #slideIndicator {
-            font-size: 12px;
-            margin: 5px 0;
-            color: #888;
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 10px 0;
+            font-size: 0.9em;
         }
 
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Landon's Website!</h1>
-    </header>
-
-    <main>
-        <section>
-            <p>Hi! I'm Landon, and I'm excited to share my favorite pictures!</p>
-        </section>
-
-        <section>
-            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Picture">
-            <p id="slideIndicator">Slide 1 of 3</p>
-            <div class="controls">
+    <div class="container">
+        <header>
+            <h1>Landon's Website</h1>
+        </header>
+        
+        <main>
+            <img id="image" src="https://myschief.net/landon.jpg" alt="Landon's Image">
+            <p id="slideText">Slide 1 of 3</p>
+            <div class="buttons">
                 <button onclick="changeImage(-1)">Previous</button>
                 <button onclick="changeImage(1)">Next</button>
             </div>
-            <div class="controls">
+            <div class="buttons">
                 <button id="playButton" onclick="startAutoPlay()">Play</button>
+                <button id="stopButton" onclick="stopAutoPlay()" disabled>Stop</button>
                 <button id="resumeButton" onclick="startAutoPlay()" disabled>Resume</button>
-                <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
             </div>
-        </section>
+            <p><a href="mailto:contact@landon.website?subject=Contact">Email Landon</a></p>
+        </main>
 
-        <section>
-            <h2>Contact Landon</h2>
-            <button onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
-        </section>
-
-        <section>
-            <h2>Daily Update</h2>
-            <p id="dailyUpdate">Today's message: "Be kind and enjoy every moment!"</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2024 Landon. All rights reserved.</p>
-    </footer>
+        <footer>
+            <p>&copy; 2024 Landon. All rights reserved.</p>
+        </footer>
+    </div>
 
     <script>
         const images = [
@@ -110,37 +111,35 @@
             "https://myschief.net/landon2.jpg",
             "https://myschief.net/landon3.jpg"
         ];
-        let currentImageIndex = 0;
+        let currentIndex = 0;
         let autoPlayInterval;
 
         function changeImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            document.getElementById('landonImage').src = images[currentImageIndex];
-            document.getElementById('slideIndicator').textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateImage();
+        }
+
+        function updateImage() {
+            document.getElementById("image").src = images[currentIndex];
+            document.getElementById("slideText").innerText = `Slide ${currentIndex + 1} of ${images.length}`;
         }
 
         function startAutoPlay() {
             autoPlayInterval = setInterval(() => changeImage(1), 3000);
-            updateButtons();
+            toggleButtons(true);
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
-            autoPlayInterval = undefined;
-            updateButtons();
+            autoPlayInterval = null;
+            toggleButtons(false);
         }
 
-        function updateButtons() {
-            document.getElementById('playButton').disabled = autoPlayInterval;
-            document.getElementById('resumeButton').disabled = autoPlayInterval;
-            document.getElementById('stopButton').disabled = !autoPlayInterval;
+        function toggleButtons(isPlaying) {
+            document.getElementById("playButton").disabled = isPlaying;
+            document.getElementById("stopButton").disabled = !isPlaying;
+            document.getElementById("resumeButton").disabled = isPlaying || autoPlayInterval === null;
         }
-
-        window.onload = () => {
-            document.getElementById('landonImage').src = images[currentImageIndex];
-            document.getElementById('slideIndicator').textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
-            updateButtons();
-        };
     </script>
 </body>
 </html>
