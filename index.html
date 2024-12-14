@@ -59,13 +59,19 @@
         .buttons-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 25px; /* Increased gap for more space */
+            margin-top: 20px; /* Added top margin for better spacing */
         }
         .email-button {
             background-color: #0066cc;
         }
         .email-button:hover {
             background-color: #005bb5;
+        }
+        .content-box {
+            border: 5px solid #333;
+            padding: 20px; /* Added more padding for spacing */
+            display: inline-block;
         }
     </style>
     <script>
@@ -154,7 +160,7 @@
         </section>
 
         <section>
-            <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
+            <div class="content-box">
                 <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
             </div>
 
