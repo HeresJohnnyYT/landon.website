@@ -3,44 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landon's Website with Canvas</title>
+    <title>Landon's Website</title>
     <style>
         body {
             background-color: #f7f7f7;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
             margin: 0;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-        header {
-            margin-bottom: 20px;
+            padding: 20px;
         }
         h1 {
             color: #333;
-            font-size: 2.5em;
         }
-        section {
-            margin: 20px 0;
+        .canvas-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         canvas {
             border: 5px solid #333;
-            max-width: 90%;
-            display: block;
-            margin: 0 auto;
+            margin-top: 20px;
+            max-width: 100%;
+        }
+        .buttons-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
         }
         button {
             background-color: #FF0000;
             color: white;
-            font-size: 16px;
             padding: 12px 40px;
             border-radius: 50px;
             border: none;
+            font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
             font-weight: bold;
-            margin: 10px;
         }
         button:hover {
             background-color: #cc0000;
@@ -50,12 +52,6 @@
             background-color: #cccccc;
             cursor: not-allowed;
         }
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 20px;
-        }
         .email-button {
             background-color: #0066cc;
         }
@@ -63,14 +59,30 @@
             background-color: #005bb5;
         }
     </style>
+</head>
+<body>
+    <h1>Landon's Website</h1>
+
+    <div class="canvas-container">
+        <canvas id="imageCanvas" width="500" height="300"></canvas>
+
+        <div class="buttons-container">
+            <button onclick="changeImage(-1)">Previous</button>
+            <button onclick="changeImage(1)">Next</button>
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button class="email-button" onclick="window.location.href='mailto:landon@example.com?subject=To%20Landon'">Email Landon</button>
+    </div>
+
     <script>
         const canvas = document.getElementById('imageCanvas');
         const ctx = canvas.getContext('2d');
-
+        
         let images = [
-            "https://myschief.net/landon.jpg",
-            "https://myschief.net/landon2.jpg",
-            "https://myschief.net/landon3.jpg"
+            "https://i.ibb.co/SNxqvdX/242079396-10159778028034083-1638624113462830914-n-1.jpg",
+            "https://i.ibb.co/DMZjWsC/20240912-191246.jpg"
         ];
         let currentImageIndex = 0;
         let currentImage = new Image();
@@ -88,44 +100,10 @@
             loadImage();
         }
 
-        function startDrawing() {
-            ctx.strokeStyle = 'red';
-            ctx.lineWidth = 5;
-            canvas.addEventListener('mousemove', draw);
-        }
-
-        function draw(event) {
-            if (event.buttons !== 1) return;
-            ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
-            ctx.stroke();
-        }
-
         window.onload = function() {
-            canvas.width = 500;
-            canvas.height = 300;
             loadImage();
         };
     </script>
-</head>
-<body>
-    <header>
-        <h1>Landon's Website</h1>
-    </header>
-
-    <main>
-        <section>
-            <canvas id="imageCanvas"></canvas>
-            <div class="buttons-container">
-                <button onclick="changeImage(-1)">Previous</button>
-                <button onclick="changeImage(1)">Next</button>
-                <button onclick="startDrawing()">Start Drawing</button>
-            </div>
-        </section>
-
-        <section>
-            <h2>Contact Landon</h2>
-            <button class="email-button" onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
-        </section>
-    </main>
 </body>
 </html>
+
