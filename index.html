@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landon's Website</title>
+    <title>Landon's Hacker Website</title>
     <style>
         /* Basic Reset */
         * {
@@ -13,22 +13,23 @@
         }
 
         body {
-            background-color: #f0f2f5;
-            font-family: 'Helvetica Neue', sans-serif;
-            color: #333;
+            background-color: #000;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
             padding: 20px;
             text-align: center;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #f6d365 10%, #fda085 100%);
+            font-size: 18px;
+            line-height: 1.6;
             animation: backgroundAnimation 10s infinite alternate;
         }
 
         @keyframes backgroundAnimation {
             0% {
-                background: linear-gradient(135deg, #f6d365 10%, #fda085 100%);
+                background-color: #000;
             }
             100% {
-                background: linear-gradient(135deg, #fda085 10%, #f6d365 100%);
+                background-color: #111;
             }
         }
 
@@ -39,9 +40,9 @@
 
         h1 {
             font-size: 4em;
-            font-family: 'Georgia', serif;
-            color: #fff;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
             animation: slideDown 1.5s ease-out;
         }
 
@@ -66,14 +67,14 @@
         }
 
         .content-box {
-            border: 5px solid #333;
+            border: 2px solid #00ff00;
             padding: 0;
             display: inline-block;
-            width: 100%;
-            max-width: 700px;
+            width: 80%;
+            max-width: 600px;
             position: relative;
-            border-radius: 15px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 255, 0, 0.5);
             overflow: hidden;
             animation: zoomIn 1s ease-out;
         }
@@ -85,11 +86,11 @@
 
         img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 8px;
             transition: transform 0.4s ease;
-            border: 3px solid #fff;
+            border: 2px solid #00ff00;
         }
 
         img:hover {
@@ -105,8 +106,8 @@
         }
 
         button {
-            background-color: #FF5722;
-            color: white;
+            background-color: #00ff00;
+            color: black;
             font-size: 18px;
             padding: 12px 35px;
             border-radius: 50px;
@@ -114,37 +115,38 @@
             cursor: pointer;
             transition: all 0.4s ease;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+            text-transform: uppercase;
         }
 
         button:hover {
-            background-color: #E64A19;
+            background-color: #32e700;
             transform: translateY(-5px);
         }
 
         button:disabled {
-            background-color: #ccc;
+            background-color: #333;
             cursor: not-allowed;
         }
 
         .email-button {
-            background-color: #0066cc;
+            background-color: #00cc99;
         }
 
         .email-button:hover {
-            background-color: #005bb5;
+            background-color: #009977;
         }
 
         .daily-update {
-            background-color: #ffffff;
-            color: #333;
+            background-color: #111;
+            color: #00ff00;
             font-size: 18px;
             padding: 20px;
             margin: 30px auto;
             width: 80%;
             max-width: 600px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.2);
             animation: slideIn 1.5s ease-out;
         }
 
@@ -155,7 +157,7 @@
 
         #slideIndicator {
             font-size: 18px;
-            color: #333;
+            color: #00ff00;
             margin-top: 15px;
             font-weight: bold;
             letter-spacing: 1px;
@@ -170,7 +172,7 @@
         }
 
         .footer a {
-            color: #0066cc;
+            color: #00ff00;
             text-decoration: none;
         }
 
@@ -255,13 +257,12 @@
 </head>
 <body>
     <header>
-        <h1>Landon's Website</h1>
+        <h1>Landon's Hacker Website</h1>
     </header>
 
     <main>
         <section>
-            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
-            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+            <p>Welcome to Landon's dark and mysterious world. Things aren't always what they seem...</p>
         </section>
 
         <section>
@@ -279,16 +280,12 @@
 
         <section class="daily-update">
             <h2>Daily Update</h2>
-            <p>Today's special message: "Be kind and enjoy every moment!"</p>
+            <p>"Stay alert. The code is always watching."</p>
         </section>
 
         <section>
             <h2>Contact Landon</h2>
             <button class="email-button" onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
-        </section>
-
-        <section>
-            <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
         </section>
 
         <footer class="footer">
