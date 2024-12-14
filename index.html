@@ -5,30 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; background-color: #f9f9f9; color: #333; }
-        h1 { font-size: 2rem; margin: 30px 0; text-align: center; }
-        table { width: 100%; max-width: 800px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); }
-        img { width: 100%; height: auto; display: block; }
-        .button-container { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        button { padding: 12px 20px; font-size: 1rem; background-color: #007BFF; color: white; border: none; border-radius: 25px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
-        button:disabled { background-color: #ccc; cursor: not-allowed; }
-        button:hover { background-color: #0056b3; transform: translateY(-3px); }
-        button:active { transform: translateY(1px); }
-        .controls { text-align: center; margin-top: 20px; }
-        #slideIndicator { font-size: 1.1rem; margin-top: 10px; text-align: center; }
-        footer { background-color: #f0f0f0; padding: 20px; text-align: center; font-size: 0.9rem; color: #666; margin-top: 50px; }
-        footer a { color: #007bff; text-decoration: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #007BFF;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #004085;
+            border-color: #004085;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            border-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <h1>Landon's Website</h1>
 
-    <table>
-        <tr>
-            <td><img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon"></td>
-        </tr>
-    </table>
+    <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon">
 
     <div class="button-container">
         <button id="playButton" onclick="startAutoPlay()">Play</button>
@@ -38,28 +100,23 @@
 
     <p id="slideIndicator">Slide 1 of 3</p>
 
-    <div class="controls">
+    <div class="button-container">
         <button onclick="changeImage(-1)">Previous</button>
         <button onclick="changeImage(1)">Next</button>
     </div>
 
-    <footer>
+    <footer class="footer">
         <p>© 2024 Landon. <a href="mailto:contact@landon.website">Contact</a></p>
     </footer>
 
     <script>
-        const images = [
-            "https://myschief.net/landon.jpg",
-            "https://myschief.net/landon2.jpg",
-            "https://myschief.net/landon3.jpg"
-        ];
-        let currentImageIndex = 0;
-        let autoPlayInterval;
+        const images = ["https://myschief.net/landon.jpg", "https://myschief.net/landon2.jpg", "https://myschief.net/landon3.jpg"];
+        let currentImageIndex = 0, autoPlayInterval;
 
         function changeImage(direction) {
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
             document.getElementById('landonImage').src = images[currentImageIndex];
-            document.getElementById('slideIndicator').textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
+            document.getElementById('slideIndicator').textContent = `Slide ${currentImageIndex + 1} of 3`;
         }
 
         function startAutoPlay() {
@@ -74,14 +131,12 @@
         }
 
         function updateButtons() {
-            document.getElementById('playButton').disabled = autoPlayInterval !== undefined;
-            document.getElementById('resumeButton').disabled = autoPlayInterval !== undefined;
-            document.getElementById('stopButton').disabled = autoPlayInterval === undefined;
+            document.getElementById('playButton').disabled = autoPlayInterval;
+            document.getElementById('resumeButton').disabled = autoPlayInterval;
+            document.getElementById('stopButton').disabled = !autoPlayInterval;
         }
 
         window.onload = () => {
-            document.getElementById('landonImage').src = images[currentImageIndex];
-            document.getElementById('slideIndicator').textContent = `Slide 1 of 3`;
             updateButtons();
         };
     </script>
