@@ -3,301 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landon's Hacker Website</title>
+    <title>Landon's Professional Website</title>
     <style>
-        /* Basic Reset */
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #000;
-            font-family: 'Courier New', monospace;
-            color: #00ff00;
-            padding: 20px;
-            text-align: center;
-            overflow-x: hidden;
-            font-size: 18px;
-            line-height: 1.6;
-            animation: backgroundAnimation 10s infinite alternate;
-        }
-
-        @keyframes backgroundAnimation {
-            0% {
-                background-color: #000;
-            }
-            100% {
-                background-color: #111;
-            }
+            background-color: #f4f4f4;
+            color: #333;
         }
 
         header {
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        h1 {
-            font-size: 4em;
-            font-family: 'Courier New', monospace;
-            color: #00ff00;
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-            animation: slideDown 1.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            0% { transform: translateY(-50px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        section {
-            margin: 30px 0;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .content-box {
-            border: 2px solid #00ff00;
-            padding: 0;
-            display: inline-block;
-            width: 80%;
-            max-width: 600px;
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 0px 10px 20px rgba(0, 255, 0, 0.5);
-            overflow: hidden;
-            animation: zoomIn 1s ease-out;
-        }
-
-        @keyframes zoomIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.4s ease;
-            border: 2px solid #00ff00;
-        }
-
-        img:hover {
-            transform: scale(1.05);
-        }
-
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        button {
-            background-color: #00ff00;
-            color: black;
-            font-size: 18px;
-            padding: 12px 35px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
-            text-transform: uppercase;
-        }
-
-        button:hover {
-            background-color: #32e700;
-            transform: translateY(-5px);
-        }
-
-        button:disabled {
             background-color: #333;
-            cursor: not-allowed;
-        }
-
-        .email-button {
-            background-color: #00cc99;
-        }
-
-        .email-button:hover {
-            background-color: #009977;
-        }
-
-        .about-landon {
-            background-color: #111;
-            color: #00ff00;
-            font-size: 18px;
-            padding: 20px;
-            margin: 30px auto;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 255, 0, 0.2);
-            animation: slideIn 1.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        #slideIndicator {
-            font-size: 18px;
-            color: #00ff00;
-            margin-top: 15px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .footer {
-            font-size: 14px;
-            color: #666;
-            margin-top: 40px;
+            color: #fff;
             text-align: center;
-            animation: fadeIn 2s ease-out;
+            padding: 30px;
         }
 
-        .footer a {
-            color: #00ff00;
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.2em;
             text-decoration: none;
         }
 
-        .footer a:hover {
+        nav a:hover {
             text-decoration: underline;
         }
 
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about, .services, .testimonials, .contact {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .services ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .services ul li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .testimonials blockquote {
+            font-style: italic;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 1em;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
-    <script>
-        let images = [
-            "https://myschief.net/landon.jpg",
-            "https://myschief.net/landon2.jpg",
-            "https://myschief.net/landon3.jpg"
-        ];
-
-        let currentImageIndex = 0;
-        let autoPlayInterval;
-
-        function changeImage(direction) {
-            const imageElement = document.getElementById('landonImage');
-            const newImage = new Image();
-
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            newImage.src = images[currentImageIndex];
-
-            newImage.onload = () => {
-                const fadeOut = imageElement.animate([{
-                    opacity: 1
-                }, {
-                    opacity: 0
-                }], {
-                    duration: 500,
-                    fill: 'forwards'
-                });
-
-                fadeOut.onfinish = function () {
-                    imageElement.src = newImage.src;
-
-                    const fadeIn = imageElement.animate([{
-                        opacity: 0
-                    }, {
-                        opacity: 1
-                    }], {
-                        duration: 500,
-                        fill: 'forwards'
-                    });
-                };
-            };
-
-            updateIndicators();
-            updateButtons();
-        }
-
-        function updateButtons() {
-            const prevButton = document.getElementById('prevButton');
-            const nextButton = document.getElementById('nextButton');
-            prevButton.disabled = currentImageIndex === 0;
-            nextButton.disabled = currentImageIndex === images.length - 1;
-        }
-
-        function updateIndicators() {
-            const indicator = document.getElementById('slideIndicator');
-            indicator.textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
-        }
-
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(() => changeImage(1), 3000);
-        }
-
-        function stopAutoPlay() {
-            clearInterval(autoPlayInterval);
-        }
-
-        window.onload = function () {
-            const imageElement = document.getElementById('landonImage');
-            imageElement.src = images[currentImageIndex];
-            updateIndicators();
-            updateButtons();
-            startAutoPlay();
-        };
-    </script>
 </head>
 <body>
+
     <header>
-        <h1>Landon's Hacker Website</h1>
+        <h1>Landon's Professional Website</h1>
     </header>
 
-    <main>
-        <section class="about-landon">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+
+        <section class="about" id="about">
             <h2>About Landon</h2>
             <p>
-                Landon is a highly skilled and enigmatic figure in the digital underworld.
-                With a knack for breaking through even the toughest firewalls, Landon’s skills are revered and feared.
-                As a mastermind in the world of cybersecurity, Landon can easily manipulate data, codes, and algorithms.
-                However, Landon’s true identity remains a mystery to many. Is he just a shadow in the dark corners of the internet,
-                or is there more lurking beneath the surface? The truth is out there, hidden deep in the binary code.
+                Landon is a dedicated professional with a passion for delivering high-quality results. Over the years, Landon has built a solid reputation through hard work, consistency, and a commitment to excellence. Known for attention to detail and a proactive approach, Landon focuses on creating long-lasting relationships and contributing positively to any team.
+            </p>
+            <p>
+                With a diverse background in various industries, Landon brings a wealth of experience to the table. Whether collaborating with others or working independently, they strive to achieve the best outcomes in every project they undertake. Landon believes that success comes from both skill and strong interpersonal relationships, making them a valuable asset to any organization or initiative.
+            </p>
+            <p>
+                Outside of professional pursuits, Landon enjoys a well-rounded lifestyle, with interests that span from arts and culture to fitness and personal development. These interests help foster creativity and resilience, key elements that Landon applies to both personal and professional endeavors.
             </p>
         </section>
 
-        <section>
-            <div class="content-box">
-                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
-            </div>
-
-            <div class="buttons-container">
-                <button id="prevButton" onclick="changeImage(-1)">Previous</button>
-                <button id="nextButton" onclick="changeImage(1)">Next</button>
-            </div>
-
-            <p id="slideIndicator">Slide 1 of 3</p>
+        <section class="services" id="services">
+            <h2>Services</h2>
+            <p>Landon offers a range of professional services tailored to meet the unique needs of each client. Some of the core services include:</p>
+            <ul>
+                <li>Consultation and strategic planning for business growth</li>
+                <li>Project management and oversight</li>
+                <li>Personalized coaching for professional development</li>
+                <li>Event planning and coordination</li>
+                <li>Team leadership and mentoring</li>
+            </ul>
         </section>
 
-        <section class="daily-update">
-            <h2>Daily Update</h2>
-            <p>"Stay alert. The code is always watching."</p>
+        <section class="testimonials" id="testimonials">
+            <h2>Testimonials</h2>
+            <blockquote>
+                "Working with Landon was a truly positive experience. Their professionalism and dedication to excellence made a huge difference in our project’s success. I highly recommend them!" 
+                <br>– Sarah T., CEO, Example Corp
+            </blockquote>
+            <blockquote>
+                "Landon's ability to think creatively and find solutions to challenges has been invaluable to our team. They are a great asset to any project." 
+                <br>– John D., Project Manager, Innovate Inc.
+            </blockquote>
         </section>
 
-        <section>
-            <h2>Contact Landon</h2>
-            <button class="email-button" onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
+        <section class="contact" id="contact">
+            <h2>Contact</h2>
+            <p>If you're interested in working with Landon or learning more about the services offered, please don't hesitate to reach out. You can contact via email or through the form below.</p>
+            <p>Email: <a href="mailto:landon@example.com">landon@example.com</a></p>
+            <p>Phone: (123) 456-7890</p>
         </section>
 
-        <footer class="footer">
-            <p>Designed by Landon &copy; 2024 | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-        </footer>
-    </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Landon. All rights reserved.</p>
+        <p><a href="#contact">Get in Touch</a></p>
+    </footer>
+
 </body>
 </html>
