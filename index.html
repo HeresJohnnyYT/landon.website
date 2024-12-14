@@ -4,6 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+        }
+        section {
+            margin: 20px 0;
+        }
+        img {
+            width: 300px;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        button {
+            background-color: #ff0000;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #slideIndicator {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .email-button {
+            background-color: #0066cc;
+        }
+        .email-button:hover {
+            background-color: #005bb5;
+        }
+    </style>
     <script>
         let images = [
             "https://myschief.net/landon.jpg",
@@ -78,7 +142,7 @@
         };
     </script>
 </head>
-<body style="background-color: #f7f7f7; font-family: Arial, sans-serif; text-align: center; padding: 20px; margin: 0; max-width: 100%; overflow-x: hidden;">
+<body>
     <header>
         <h1>Landon's Website</h1>
     </header>
@@ -91,10 +155,10 @@
 
         <section>
             <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
-                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="300">
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
             </div>
 
-            <div>
+            <div class="buttons-container">
                 <button id="prevButton" onclick="changeImage(-1)">Previous</button>
                 <button id="nextButton" onclick="changeImage(1)">Next</button>
             </div>
@@ -104,7 +168,7 @@
 
         <section>
             <h2>Contact Landon</h2>
-            <button onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
+            <button class="email-button" onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
         </section>
 
         <section>
