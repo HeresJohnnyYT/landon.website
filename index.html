@@ -12,53 +12,54 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7; /* Soothing white background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
             color: #333;
-            text-align: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
-            overflow: hidden;
-            padding: 20px;
+            padding: 0 20px;
+            overflow-x: hidden;
         }
 
         h1 {
-            margin: 20px 0;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #333;
-            line-height: 1.2;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
         }
 
         img {
-            max-width: 100%;
+            max-width: 90%;
             height: auto;
-            max-height: 300px;
-            border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            max-height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         img:hover {
             transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .button-container {
-            margin: 20px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         button {
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             color: white;
-            background-color: #4CAF50;
-            border: 2px solid #4CAF50;
-            border-radius: 10px;
+            background-color: #007BFF;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             outline: none;
@@ -66,13 +67,14 @@
         }
 
         button:hover {
-            background-color: #45a049;
-            border-color: #45a049;
+            background-color: #0056b3;
+            border-color: #0056b3;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         button:active {
-            background-color: #388e3c;
-            border-color: #388e3c;
+            background-color: #004085;
+            border-color: #004085;
         }
 
         button:disabled {
@@ -81,30 +83,47 @@
             cursor: not-allowed;
         }
 
-        #slideIndicator {
-            margin: 15px;
-            font-size: 1.1rem;
+        .slide-indicator {
+            margin-top: 15px;
+            font-size: 1.2rem;
             color: #777;
         }
 
         footer {
-            margin-top: 30px;
-            font-size: 0.9rem;
+            margin-top: 50px;
+            font-size: 1rem;
             color: #777;
+            text-align: center;
         }
 
         footer a {
-            color: #4CAF50;
+            color: #007BFF;
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+
+            img {
+                max-height: 300px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <h1>Landon's Website</h1>
+
+    <h1>Landon's Professional Website</h1>
 
     <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon">
 
@@ -114,7 +133,7 @@
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
     </div>
 
-    <p id="slideIndicator">Slide 1 of 3</p>
+    <p class="slide-indicator" id="slideIndicator">Slide 1 of 3</p>
 
     <div class="button-container">
         <button onclick="changeImage(-1)">Previous</button>
@@ -126,7 +145,11 @@
     </footer>
 
     <script>
-        const images = ["https://myschief.net/landon.jpg", "https://myschief.net/landon2.jpg", "https://myschief.net/landon3.jpg"];
+        const images = [
+            "https://myschief.net/landon.jpg",
+            "https://myschief.net/landon2.jpg",
+            "https://myschief.net/landon3.jpg"
+        ];
         let currentImageIndex = 0, autoPlayInterval;
 
         function changeImage(direction) {
