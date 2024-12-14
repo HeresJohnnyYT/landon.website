@@ -4,6 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        header {
+            margin-top: 20px;
+        }
+
+        main {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        h1, h2 {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        p {
+            font-family: 'Arial', sans-serif;
+            color: #666;
+        }
+
+        #slideIndicator {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,7 +86,7 @@
 
         <section>
             <div>
-                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="300">
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
             </div>
 
             <div>
@@ -51,12 +119,6 @@
             <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
             <p>Have a great day, and see you soon!</p>
         </section>
-
-        <section style="height: 100px;"></section>
-        <section style="height: 100px;"></section>
-        <section style="height: 100px;"></section>
-        <section style="height: 100px;"></section>
-        <section style="height: 100px;"></section>
     </main>
 
     <footer>
