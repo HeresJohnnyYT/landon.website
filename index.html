@@ -5,82 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
     <style>
-        body {
-            background-color: #f7f7f7;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
+        /* Basic Reset */
+        * {
             margin: 0;
-            max-width: 100%;
-            overflow-x: hidden;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f6d365 10%, #fda085 100%);
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(135deg, #f6d365 10%, #fda085 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, #fda085 10%, #f6d365 100%);
+            }
+        }
+
         header {
             margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
         }
+
         h1 {
-            color: #333;
-            font-size: 3em;
-            font-family: 'Georgia', serif; /* Elegant font */
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 4em;
+            font-family: 'Georgia', serif;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: slideDown 1.5s ease-out;
         }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
         section {
-            margin: 20px 0;
+            margin: 30px 0;
+            animation: fadeInUp 1s ease-out;
         }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         .content-box {
             border: 5px solid #333;
             padding: 0;
             display: inline-block;
             width: 100%;
-            max-width: 600px; /* You can adjust this value */
+            max-width: 700px;
             position: relative;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: zoomIn 1s ease-out;
         }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image fills the container */
-            border-radius: 8px;
-            transition: transform 0.3s ease-in-out;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+            border: 3px solid #fff;
         }
+
         img:hover {
             transform: scale(1.05);
         }
-        button {
-            background-color: #FF0000;
-            color: white;
-            font-size: 16px;
-            padding: 12px 40px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        button:hover {
-            background-color: #cc0000;
-            transform: scale(1.05);
-        }
-        button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        #slideIndicator {
-            font-size: 18px;
-            color: #333;
-            margin-top: 10px;
-        }
+
         .buttons-container {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             margin-top: 20px;
+            animation: fadeIn 1.5s ease-out;
         }
+
+        button {
+            background-color: #FF5722;
+            color: white;
+            font-size: 18px;
+            padding: 12px 35px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #E64A19;
+            transform: translateY(-5px);
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
         .email-button {
             background-color: #0066cc;
         }
+
         .email-button:hover {
             background-color: #005bb5;
         }
+
+        .daily-update {
+            background-color: #ffffff;
+            color: #333;
+            font-size: 18px;
+            padding: 20px;
+            margin: 30px auto;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        #slideIndicator {
+            font-size: 18px;
+            color: #333;
+            margin-top: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
     </style>
     <script>
         let images = [
@@ -180,19 +277,23 @@
             <p id="slideIndicator">Slide 1 of 3</p>
         </section>
 
+        <section class="daily-update">
+            <h2>Daily Update</h2>
+            <p>Today's special message: "Be kind and enjoy every moment!"</p>
+        </section>
+
         <section>
             <h2>Contact Landon</h2>
             <button class="email-button" onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
         </section>
 
         <section>
-            <h2>Daily Update</h2>
-            <p id="dailyUpdate">Today's special message: "Be kind and enjoy every moment!"</p>
-        </section>
-
-        <section>
             <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
         </section>
+
+        <footer class="footer">
+            <p>Designed by Landon &copy; 2024 | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
     </main>
 </body>
 </html>
