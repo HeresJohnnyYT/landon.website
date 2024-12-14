@@ -4,6 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 36px;
+        }
+        table {
+            margin: 20px auto;
+            border: 5px solid #333;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #slideIndicator {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        section {
+            margin: 30px 0;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
     <script>
         let images = [
             "https://myschief.net/landon.jpg",
@@ -78,76 +131,60 @@
         };
     </script>
 </head>
-<body bgcolor="#f7f7f7" text="#333">
-    <h1 align="center">Landon's Website</h1>
+<body>
+    <h1>Landon's Website</h1>
+    <table>
+        <tr>
+            <td>
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Picture" width="300">
+            </td>
+        </tr>
+    </table>
 
-    <div align="center">
-        <table border="5" cellpadding="10" cellspacing="0">
-            <tr>
-                <td>
-                    <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Picture" width="300">
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <div align="center">
+    <div>
         <button id="playButton" onclick="startAutoPlay()">Play</button>
         <button id="resumeButton" onclick="startAutoPlay()">Resume</button>
         <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
     </div>
-
-    <p align="center" id="slideIndicator">Slide 1 of 3</p>
-
-    <div align="center">
+    <p id="slideIndicator">Slide 1 of 3</p>
+    <div>
         <button onclick="changeImage(-1)">Previous</button>
         <button onclick="changeImage(1)">Next</button>
     </div>
 
-    <div align="center">
-        <h2>Contact</h2>
-        <button onclick="window.location.href='mailto:contact@landon.website';">Email Landon</button>
-    </div>
-
-    <div align="center">
+    <section>
         <h2>Blog</h2>
         <button onclick="alert('Welcome to my blog!')">Visit My Blog</button>
-    </div>
-
-    <div align="center">
+    </section>
+    
+    <section>
         <h2>Gallery</h2>
         <button onclick="alert('Here are some cool pictures!')">View Gallery</button>
-    </div>
-
-    <div align="center">
+    </section>
+    
+    <section>
         <h2>Feedback</h2>
         <button onclick="alert('Thanks for your feedback!')">Submit Feedback</button>
-    </div>
-
-    <div align="center">
+    </section>
+    
+    <section>
         <h2>Upcoming Events</h2>
         <button onclick="alert('Exciting events coming soon!')">Join the Fun!</button>
-    </div>
-
-    <div align="center">
+    </section>
+    
+    <section>
         <h2>Stay Updated</h2>
         <button onclick="alert('Stay tuned for updates!')">Get Updates</button>
-    </div>
-
-    <div align="center">
+    </section>
+    
+    <section>
         <h2>Thank You!</h2>
         <button onclick="alert('Thanks for visiting! Come back soon!')">See You Soon!</button>
-    </div>
+    </section>
 
-    <div align="center">
+    <section>
         <h2>Let’s Connect</h2>
         <button onclick="window.location.href='mailto:contact@landon.website';">Email Me</button>
-    </div>
-
-    <div align="center">
-        <h2>See You Soon!</h2>
-        <button onclick="alert('Thanks for your support!')">Goodbye</button>
-    </div>
-
+    </section>
 </body>
 </html>
