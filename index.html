@@ -6,41 +6,41 @@
     <title>Landon's Website</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
-            text-align: center;
-            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            text-align: center;
+            flex-direction: column;
         }
 
-        header {
-            margin-top: 10px;
+        header, footer {
+            font-size: 14px;
         }
 
         main {
             width: 90%;
-            max-width: 600px;
+            max-width: 480px;
             padding: 10px;
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
 
         img {
-            max-width: 100%;
+            width: 100%;
+            height: auto;
             border-radius: 8px;
             margin-bottom: 10px;
         }
 
         button {
-            padding: 8px 16px;
+            padding: 6px 12px;
             margin: 5px;
-            font-size: 14px;
+            font-size: 12px;
             border-radius: 5px;
             border: none;
             cursor: pointer;
@@ -52,26 +52,16 @@
             color: white;
         }
 
-        footer {
-            font-size: 12px;
-            margin-top: 20px;
-        }
-
-        h1, h2 {
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
-
-        p {
-            font-family: Arial, sans-serif;
-            color: #666;
-            font-size: 14px;
-        }
-
         #slideIndicator {
             font-size: 12px;
-            margin: 10px 0;
+            margin: 5px 0;
             color: #888;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
     </style>
 </head>
@@ -82,29 +72,21 @@
 
     <main>
         <section>
-            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
-            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+            <p>Hi! I'm Landon, and I'm excited to share my favorite pictures!</p>
         </section>
 
         <section>
-            <div>
-                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon">
+            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Picture">
+            <p id="slideIndicator">Slide 1 of 3</p>
+            <div class="controls">
+                <button onclick="changeImage(-1)">Previous</button>
+                <button onclick="changeImage(1)">Next</button>
             </div>
-
-            <div>
+            <div class="controls">
                 <button id="playButton" onclick="startAutoPlay()">Play</button>
                 <button id="resumeButton" onclick="startAutoPlay()" disabled>Resume</button>
                 <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
             </div>
-
-            <p id="slideIndicator">Slide 1 of 3</p>
-
-            <div>
-                <button onclick="changeImage(-1)">Previous</button>
-                <button onclick="changeImage(1)">Next</button>
-            </div>
-
-            <p>Use the buttons to navigate or press play to start the slideshow.</p>
         </section>
 
         <section>
@@ -114,12 +96,7 @@
 
         <section>
             <h2>Daily Update</h2>
-            <p id="dailyUpdate">Today's special message: "Be kind and enjoy every moment!"</p>
-        </section>
-
-        <section>
-            <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
-            <p>Have a great day, and see you soon!</p>
+            <p id="dailyUpdate">Today's message: "Be kind and enjoy every moment!"</p>
         </section>
     </main>
 
