@@ -14,43 +14,50 @@
             align-items: center;
             height: 100vh;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .container {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
             width: 90%;
             max-width: 600px;
+            padding: 20px;
             text-align: center;
+            overflow: hidden;
         }
 
         header {
             background-color: #222;
             color: #fff;
             padding: 15px 0;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         header h1 {
-            font-size: 1.8em;
+            font-size: 1.5em;
             margin: 0;
         }
 
         main {
-            padding: 20px;
+            margin: 0;
         }
 
         img {
             width: 100%;
+            max-width: 100%;
+            height: auto;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
         button {
@@ -60,7 +67,8 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
         }
 
         button:hover {
@@ -72,10 +80,21 @@
             color: #fff;
             padding: 10px 0;
             font-size: 0.9em;
+            margin-top: 20px;
         }
 
         footer p {
             margin: 0;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -84,7 +103,7 @@
         <header>
             <h1>Landon's Website</h1>
         </header>
-        
+
         <main>
             <img id="image" src="https://myschief.net/landon.jpg" alt="Landon's Image">
             <p id="slideText">Slide 1 of 3</p>
@@ -143,3 +162,4 @@
     </script>
 </body>
 </html>
+
