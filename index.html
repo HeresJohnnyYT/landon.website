@@ -5,58 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
     <style>
-        body {
-            background-color: #f7f7f7;
-            font-family: Arial, sans-serif;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
         h1 {
-            margin-top: 50px;
-            font-size: 36px;
+            font-size: 2.5rem;
+            margin: 30px 0;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
+
         table {
-            margin: 20px auto;
-            border: 5px solid #333;
-            padding: 10px;
-            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
+
         img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease-in-out;
         }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
         button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            background-color: #4CAF50;
+            padding: 12px 24px;
+            font-size: 1rem;
             color: white;
+            background-color: #007BFF;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         button:disabled {
-            background-color: #ddd;
+            background-color: #ccc;
             cursor: not-allowed;
         }
+
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
+            transform: translateY(-3px);
         }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
         #slideIndicator {
-            font-size: 18px;
+            font-size: 1.1rem;
             margin-top: 10px;
+            color: #555;
         }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .controls button {
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background-color: #28a745;
+            color: white;
+        }
+
+        .controls button:hover {
+            background-color: #218838;
+        }
+
         section {
-            margin: 30px 0;
+            margin-top: 50px;
+            text-align: center;
         }
-        h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        section button {
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            background-color: #6c757d;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        section button:hover {
+            background-color: #5a6268;
+            transform: translateY(-3px);
+        }
+
+        section button:active {
+            transform: translateY(1px);
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
+</head>
+<body>
+    <h1>Landon's Website</h1>
+
+    <table>
+        <tr>
+            <td>
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Picture">
+            </td>
+        </tr>
+    </table>
+
+    <div class="button-container">
+        <button id="playButton" onclick="startAutoPlay()">Play</button>
+        <button id="resumeButton" onclick="startAutoPlay()">Resume</button>
+        <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
+    </div>
+    <p id="slideIndicator">Slide 1 of 3</p>
+
+    <div class="controls">
+        <button onclick="changeImage(-1)">Previous</button>
+        <button onclick="changeImage(1)">Next</button>
+    </div>
+
+    <section>
+        <h2>Blog</h2>
+        <button onclick="alert('Welcome to my blog!')">Visit My Blog</button>
+    </section>
+
+    <section>
+        <h2>Gallery</h2>
+        <button onclick="alert('Here are some cool pictures!')">View Gallery</button>
+    </section>
+
+    <section>
+        <h2>Feedback</h2>
+        <button onclick="alert('Thanks for your feedback!')">Submit Feedback</button>
+    </section>
+
+    <section>
+        <h2>Upcoming Events</h2>
+        <button onclick="alert('Exciting events coming soon!')">Join the Fun!</button>
+    </section>
+
+    <section>
+        <h2>Stay Updated</h2>
+        <button onclick="alert('Stay tuned for updates!')">Get Updates</button>
+    </section>
+
+    <section>
+        <h2>Thank You!</h2>
+        <button onclick="alert('Thanks for visiting! Come back soon!')">See You Soon!</button>
+    </section>
+
+    <section>
+        <h2>Let’s Connect</h2>
+        <button onclick="window.location.href='mailto:contact@landon.website';">Email Me</button>
+    </section>
+
+    <footer>
+        <p>© 2024 Landon. All rights reserved. | <a href="mailto:contact@landon.website">Contact</a></p>
+    </footer>
+
     <script>
         let images = [
             "https://myschief.net/landon.jpg",
@@ -130,61 +285,5 @@
             updateButtons();
         };
     </script>
-</head>
-<body>
-    <h1>Landon's Website</h1>
-    <table>
-        <tr>
-            <td>
-                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Picture" width="300">
-            </td>
-        </tr>
-    </table>
-
-    <div>
-        <button id="playButton" onclick="startAutoPlay()">Play</button>
-        <button id="resumeButton" onclick="startAutoPlay()">Resume</button>
-        <button id="stopButton" onclick="stopAutoPlay()">Stop</button>
-    </div>
-    <p id="slideIndicator">Slide 1 of 3</p>
-    <div>
-        <button onclick="changeImage(-1)">Previous</button>
-        <button onclick="changeImage(1)">Next</button>
-    </div>
-
-    <section>
-        <h2>Blog</h2>
-        <button onclick="alert('Welcome to my blog!')">Visit My Blog</button>
-    </section>
-    
-    <section>
-        <h2>Gallery</h2>
-        <button onclick="alert('Here are some cool pictures!')">View Gallery</button>
-    </section>
-    
-    <section>
-        <h2>Feedback</h2>
-        <button onclick="alert('Thanks for your feedback!')">Submit Feedback</button>
-    </section>
-    
-    <section>
-        <h2>Upcoming Events</h2>
-        <button onclick="alert('Exciting events coming soon!')">Join the Fun!</button>
-    </section>
-    
-    <section>
-        <h2>Stay Updated</h2>
-        <button onclick="alert('Stay tuned for updates!')">Get Updates</button>
-    </section>
-    
-    <section>
-        <h2>Thank You!</h2>
-        <button onclick="alert('Thanks for visiting! Come back soon!')">See You Soon!</button>
-    </section>
-
-    <section>
-        <h2>Let’s Connect</h2>
-        <button onclick="window.location.href='mailto:contact@landon.website';">Email Me</button>
-    </section>
 </body>
 </html>
