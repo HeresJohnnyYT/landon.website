@@ -6,100 +6,83 @@
     <title>Landon's Website</title>
     <style>
         body {
+            background-color: #111;
+            color: white;
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
             text-align: center;
-            margin: 0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .content-box {
-            display: inline-block;
-            border: 4px solid #333; /* Adjust border width */
-            padding: 15px;
-            margin-bottom: 20px;
+            margin: 0;
             max-width: 100%;
-            position: relative;
-            overflow: hidden;
-            width: 80%; /* Adjust width for better fit */
-            height: 400px; /* Fixed height */
-            box-sizing: border-box; /* Ensure padding doesn't affect size */
+            overflow-x: hidden;
         }
-
+        header {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #FF0000;
+            font-size: 3em;
+            text-transform: uppercase;
+        }
+        section {
+            margin: 20px 0;
+        }
+        .content-box {
+            border: 5px solid #FF0000;
+            padding: 20px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
         img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Make sure image covers the container */
+            width: 300px;
             border-radius: 8px;
             transition: transform 0.3s ease-in-out;
         }
-
         img:hover {
-            transform: scale(1.05); /* Slight zoom effect on hover */
+            transform: scale(1.05);
         }
-
-        .buttons-container {
-            margin-top: 10px;
-        }
-
         button {
             background-color: #FF0000;
             color: white;
             font-size: 16px;
-            padding: 12px 30px;
-            border-radius: 25px;
+            padding: 12px 40px;
+            border-radius: 50px;
             border: none;
             cursor: pointer;
-            font-weight: bold;
             transition: all 0.3s ease;
+            font-weight: bold;
         }
-
         button:hover {
             background-color: #cc0000;
             transform: scale(1.05);
         }
-
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
-
         #slideIndicator {
             font-size: 18px;
-            color: #333;
+            color: #FF0000;
             margin-top: 10px;
         }
-
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
         .email-button {
             background-color: #0066cc;
         }
-
         .email-button:hover {
             background-color: #005bb5;
         }
-
-        p {
-            color: #333;
-            font-size: 1em;
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.6;
+        .email-section {
+            margin-top: 50px;
+            text-align: left;
         }
-
-        .main-content {
-            max-width: 1000px;
-            margin: 0 auto;
+        .instructions {
+            margin-top: 20px;
+            color: #aaa;
         }
     </style>
 </head>
@@ -108,7 +91,7 @@
         <h1>Landon's Website</h1>
     </header>
 
-    <main class="main-content">
+    <main>
         <section>
             <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
             <p>This is a special place where I can show you some pictures of my favorite moments!</p>
@@ -132,6 +115,18 @@
             <button class="email-button" onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
         </section>
 
+        <!-- Send Me an Email Section -->
+        <section class="email-section">
+            <h2>Send Me a Test Email</h2>
+            <button class="email-button" onclick="sendTestEmail()">Send Test Email</button>
+            <p class="instructions">Click the button above to send a test email. Please check your inbox to confirm that it works!</p>
+        </section>
+
+        <section>
+            <h2>Daily Update</h2>
+            <p id="dailyUpdate">Today's special message: "Be kind and enjoy every moment!"</p>
+        </section>
+
         <section>
             <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
         </section>
@@ -145,6 +140,7 @@
         ];
 
         let currentImageIndex = 0;
+        let autoPlayInterval;
 
         function changeImage(direction) {
             const imageElement = document.getElementById('landonImage');
@@ -193,12 +189,27 @@
             indicator.textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
         }
 
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => changeImage(1), 3000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
         window.onload = function () {
             const imageElement = document.getElementById('landonImage');
             imageElement.src = images[currentImageIndex];
             updateIndicators();
             updateButtons();
+            startAutoPlay();
         };
+
+        function sendTestEmail() {
+            // JavaScript doesn't support sending email directly
+            // You'd typically integrate an email service like SMTP or a backend server to send emails
+            alert("This would send a test email to your inbox (Functionality not implemented in this demo).");
+        }
     </script>
 </body>
 </html>
