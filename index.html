@@ -4,162 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Website</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
-
-        .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
-            padding: 20px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        header {
-            background-color: #222;
-            color: #fff;
-            padding: 15px 0;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 1.5em;
-            margin: 0;
-        }
-
-        main {
-            margin: 0;
-        }
-
-        img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 1em;
-        }
-
-        button:hover {
-            background-color: #0057a2;
-        }
-
-        footer {
-            background-color: #222;
-            color: #fff;
-            padding: 10px 0;
-            font-size: 0.9em;
-            margin-top: 20px;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        a {
-            color: #0066cc;
-            text-decoration: none;
-            font-size: 1.1em;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Landon's Website</h1>
-        </header>
-
-        <main>
-            <img id="image" src="https://myschief.net/landon.jpg" alt="Landon's Image">
-            <p id="slideText">Slide 1 of 3</p>
-            <div class="buttons">
-                <button onclick="changeImage(-1)">Previous</button>
-                <button onclick="changeImage(1)">Next</button>
-            </div>
-            <div class="buttons">
-                <button id="playButton" onclick="startAutoPlay()">Play</button>
-                <button id="stopButton" onclick="stopAutoPlay()" disabled>Stop</button>
-                <button id="resumeButton" onclick="startAutoPlay()" disabled>Resume</button>
-            </div>
-            <p><a href="mailto:contact@landon.website?subject=Contact">Email Landon</a></p>
-        </main>
-
-        <footer>
-            <p>&copy; 2024 Landon. All rights reserved.</p>
-        </footer>
-    </div>
-
     <script>
-        const images = [
+        let images = [
             "https://myschief.net/landon.jpg",
             "https://myschief.net/landon2.jpg",
             "https://myschief.net/landon3.jpg"
         ];
-        let currentIndex = 0;
+
+        let currentImageIndex = 0;
         let autoPlayInterval;
 
         function changeImage(direction) {
-            currentIndex = (currentIndex + direction + images.length) % images.length;
-            updateImage();
+            const imageElement = document.getElementById('landonImage');
+            const newImage = new Image();
+
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            newImage.src = images[currentImageIndex];
+
+            newImage.onload = () => {
+                const fadeOut = imageElement.animate([{
+                    opacity: 1
+                }, {
+                    opacity: 0
+                }], {
+                    duration: 500,
+                    fill: 'forwards'
+                });
+
+                fadeOut.onfinish = function () {
+                    imageElement.src = newImage.src;
+
+                    const fadeIn = imageElement.animate([{
+                        opacity: 0
+                    }, {
+                        opacity: 1
+                    }], {
+                        duration: 500,
+                        fill: 'forwards'
+                    });
+                };
+            };
+
+            updateIndicators();
+            updateButtons();
         }
 
-        function updateImage() {
-            document.getElementById("image").src = images[currentIndex];
-            document.getElementById("slideText").innerText = `Slide ${currentIndex + 1} of ${images.length}`;
+        function updateButtons() {
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            prevButton.disabled = currentImageIndex === 0;
+            nextButton.disabled = currentImageIndex === images.length - 1;
+        }
+
+        function updateIndicators() {
+            const indicator = document.getElementById('slideIndicator');
+            indicator.textContent = `Slide ${currentImageIndex + 1} of ${images.length}`;
         }
 
         function startAutoPlay() {
             autoPlayInterval = setInterval(() => changeImage(1), 3000);
-            toggleButtons(true);
         }
 
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
-            autoPlayInterval = null;
-            toggleButtons(false);
         }
 
-        function toggleButtons(isPlaying) {
-            document.getElementById("playButton").disabled = isPlaying;
-            document.getElementById("stopButton").disabled = !isPlaying;
-            document.getElementById("resumeButton").disabled = isPlaying || autoPlayInterval === null;
-        }
+        window.onload = function () {
+            const imageElement = document.getElementById('landonImage');
+            imageElement.src = images[currentImageIndex];
+            updateIndicators();
+            updateButtons();
+            startAutoPlay();
+        };
     </script>
+</head>
+<body style="background-color: #f7f7f7; font-family: Arial, sans-serif; text-align: center; padding: 20px; margin: 0; max-width: 100%; overflow-x: hidden;">
+    <header>
+        <h1>Landon's Website</h1>
+    </header>
+
+    <main>
+        <section>
+            <p>Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you!</p>
+            <p>This is a special place where I can show you some pictures of my favorite moments!</p>
+        </section>
+
+        <section>
+            <div style="border: 5px solid #333; padding: 10px; display: inline-block;">
+                <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" width="300">
+            </div>
+
+            <div>
+                <button id="prevButton" onclick="changeImage(-1)">Previous</button>
+                <button id="nextButton" onclick="changeImage(1)">Next</button>
+            </div>
+
+            <p id="slideIndicator">Slide 1 of 3</p>
+        </section>
+
+        <section>
+            <h2>Contact Landon</h2>
+            <button onclick="window.location.href='mailto:contact@landon.website?subject=To%20Landon';">Email Landon</button>
+        </section>
+
+        <section>
+            <h2>Daily Update</h2>
+            <p id="dailyUpdate">Today's special message: "Be kind and enjoy every moment!"</p>
+        </section>
+
+        <section>
+            <p>Thanks for checking out my page! I'll keep adding more pictures and things!</p>
+        </section>
+    </main>
 </body>
 </html>
-
