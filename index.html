@@ -119,7 +119,8 @@
         <section class="email-section">
             <h2>Send Me a Test Email</h2>
             <button class="email-button" onclick="sendTestEmail()">Send Test Email</button>
-            <p class="instructions">Click the button above to send a test email. Please check your inbox to confirm that it works!</p>
+            <p class="instructions">Click the button above, and follow the instructions that will appear. If my server is active, I'll send you a confirmation email.</p>
+            <p class="instructions">To test the email, simply send an email to <strong>contact@landon.website</strong> and you'll get a response if the server is working!</p>
         </section>
 
         <section>
@@ -206,9 +207,7 @@
         };
 
         function sendTestEmail() {
-            // JavaScript doesn't support sending email directly
-            // You'd typically integrate an email service like SMTP or a backend server to send emails
-            alert("This would send a test email to your inbox (Functionality not implemented in this demo).");
+            alert("To test the email, please send an email to contact@landon.website and wait for the confirmation response if the server is active.");
         }
     </script>
 </body>
