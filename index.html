@@ -43,6 +43,8 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             margin: 20px 0;
             transition: transform 0.3s ease;
+            width: fit-content;
+            margin: 20px auto;
         }
 
         .image-container:hover {
@@ -50,10 +52,11 @@
         }
 
         #landonImage {
-            max-width: 100%;
-            height: auto;
+            width: 250px;  /* Fixed width */
+            height: auto;  /* Maintain aspect ratio */
             border-radius: 10px;
             cursor: pointer;
+            display: block;
         }
 
         .button-container {
@@ -102,6 +105,10 @@
             
             button {
                 padding: 10px 20px;
+            }
+
+            #landonImage {
+                width: 200px;  /* Slightly smaller on mobile */
             }
         }
 
