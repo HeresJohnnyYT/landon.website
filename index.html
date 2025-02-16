@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landon's Website!</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__bounceIn">Welcome to Landon's Website!</h1>
+        
+        <p class="animate__animated animate__fadeIn">Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you! 🌟</p>
+        
+        <div class="image-container">
+            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" onclick="celebrate()">
+        </div>
+        
+        <div class="button-container">
+            <button id="prevButton" onclick="changeImage(-1)" disabled>← Previous</button>
+            <button id="nextButton" onclick="changeImage(1)">Next →</button>
+        </div>
+
+        <div class="fun-fact">
+            <p>🎮 Press the 'E' key for a surprise message!</p>
+        </div>
+
+        <p>Thanks for checking out my page! I'll keep adding more pictures and things! 😊</p>
+        <p>Have a great day, and see you soon! 👋</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
