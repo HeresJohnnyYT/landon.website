@@ -14,6 +14,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      overflow-x: hidden;
     }
 
     .container {
@@ -90,16 +91,24 @@
 
     .confetti {
       position: fixed;
-      width: 10px;
-      height: 10px;
-      background-color: #f0f;
-      animation: fall 3s linear infinite;
+      width: 12px;
+      height: 12px;
+      background-color: red;
+      top: -20px;
       z-index: 9999;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: confettiFall linear forwards;
     }
 
-    @keyframes fall {
-      to {
-        transform: translateY(100vh);
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
       }
     }
 
@@ -156,7 +165,7 @@
     }
 
     function startConfetti() {
-      for (let i = 0; i < 60; i++) {
+      for (let i = 0; i < 100; i++) {
         createConfetti();
       }
     }
@@ -164,11 +173,25 @@
     function createConfetti() {
       const confetti = document.createElement("div");
       confetti.classList.add("confetti");
-      confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-      confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
+
+      const colors = ["#e91e63", "#9c27b0", "#ff5722", "#03a9f4", "#4caf50", "#ffc107"];
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+      const size = Math.random() * 8 + 6;
+      confetti.style.width = size + "px";
+      confetti.style.height = size * 0.6 + "px";
+
+      const left = Math.random() * 100;
+      confetti.style.left = left + "vw";
+
+      confetti.style.animationDuration = (Math.random() * 1.5 + 2.5) + "s";
+      confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
       document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 3000);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 4000);
     }
 
     window.onload = updateImage;
