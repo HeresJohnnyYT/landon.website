@@ -1,94 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landon's Birthday Website!</title>
+    <title>Landon's Birthday Website</title>
     <style>
-        /* General Styles */
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #f7f7f7 0%, #e0f7fa 100%);
+            text-align: center;
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Container */
-        .container {
-            max-width: 800px;
-            text-align: center;
-        }
-
-        /* Headings & Text */
         h1 {
             color: #2196F3;
-            font-size: 2.5em;
+            font-size: 3.5em;
+            margin-top: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
         }
 
         p {
-            font-size: 1.2em;
-            line-height: 1.6;
+            font-size: 1.5em;
             color: #333;
-            margin: 15px 0;
+            margin: 20px 0;
+            line-height: 1.6;
         }
 
-        /* Image Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
         .image-container {
             background: white;
-            padding: 15px;
-            border-radius: 15px;
+            border-radius: 20px;
+            padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: fit-content;
-            margin: 20px auto;
-            transition: transform 0.3s ease;
-        }
-
-        .image-container:hover {
-            transform: scale(1.02);
+            margin: 40px auto;
+            max-width: 400px;
         }
 
         #landonImage {
             width: 100%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 10px;
+            max-width: 350px;
+            border-radius: 15px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
         #landonImage:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
-        /* Buttons */
         .button-container {
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         button {
             background-color: #4CAF50;
             color: white;
+            padding: 15px 35px;
             border: none;
-            padding: 12px 24px;
-            margin: 0 10px;
-            border-radius: 25px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
+            font-size: 1.5em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        button:hover:not(:disabled) {
+        button:hover {
             background-color: #45a049;
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         button:disabled {
@@ -96,59 +84,62 @@
             cursor: not-allowed;
         }
 
-        /* Fun Fact Box */
         .fun-fact {
             background-color: #FFF3E0;
-            padding: 15px;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 3px dashed #FF9800;
+            font-size: 1.3em;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .birthday-countdown {
+            background-color: #FFEB3B;
+            padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
-            border: 2px dashed #FF9800;
+            font-size: 1.2em;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Confetti Effect */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f0f;
-            animation: fall 3s linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
             }
-        }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
             h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
 
             p {
-                font-size: 1em;
+                font-size: 1.2em;
             }
 
             button {
-                padding: 10px 20px;
+                padding: 12px 25px;
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding: 20px;
             }
 
             #landonImage {
-                max-width: 200px;
+                max-width: 300px;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <h1>🎉 Happy Birthday, Landon! 🎂</h1>
-
-        <p>Celebrating you today, on your special day—April 9th! 🎁 Enjoy every moment! 🎈</p>
-
+        <h1>Happy Birthday, Landon!</h1>
+        <p>We know your birthday was on the 9th, but we’re still celebrating today, the 12th!</p>
+        
         <div class="image-container">
-            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" onclick="celebrate()">
+            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Birthday Picture" onclick="celebrate()">
         </div>
 
         <div class="button-container">
@@ -157,58 +148,32 @@
         </div>
 
         <div class="fun-fact">
-            <p>🎮 Press the button below for a surprise message!</p>
-            <button onclick="showMessage()">Click for a surprise! 🎉</button>
+            <p>🎉 Fun Fact: Landon is the coolest! 💥</p>
         </div>
 
-        <p>Thanks for checking out your birthday page! More surprises coming soon! 😊</p>
-        <p>Enjoy your day, and see you soon! 👋</p>
+        <div class="birthday-countdown">
+            <p>🎂 Countdown: Landon’s next birthday is in <span id="countdownTimer"></span> days! 🎉</p>
+        </div>
+
+        <p>Thanks for checking out my birthday page! Keep enjoying the fun, and check back for more updates! 🎈</p>
+        <p>Have a great day, and see you soon! 👋</p>
     </div>
 
     <script>
-        // Array of image URLs
+        // Image change logic
         let images = [
             "https://myschief.net/landon.jpg",
             "https://myschief.net/landon2.jpg",
             "https://myschief.net/landon3.jpg"
         ];
-
         let currentImageIndex = 0;
-        let isAnimating = false; // Prevent multiple animations
-
-        // Preload images
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
 
         function changeImage(direction) {
-            // Prevent a new animation if one is already running
-            if (isAnimating) return;
-            isAnimating = true;
-
             const imageElement = document.getElementById('landonImage');
-            // Calculate the new index
             currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
 
-            // Start fade-out animation
-            imageElement.classList.add('animate__animated', 'animate__fadeOut');
-
-            // When fade-out completes, update the image and fade it in
-            imageElement.addEventListener('animationend', function handleFadeOut() {
-                imageElement.removeEventListener('animationend', handleFadeOut);
-                imageElement.classList.remove('animate__fadeOut');
-                imageElement.src = images[currentImageIndex];
-                updateButtons();
-
-                // Start fade-in animation
-                imageElement.classList.add('animate__fadeIn');
-                imageElement.addEventListener('animationend', function handleFadeIn() {
-                    imageElement.removeEventListener('animationend', handleFadeIn);
-                    imageElement.classList.remove('animate__animated', 'animate__fadeIn');
-                    isAnimating = false;
-                }, { once: true });
-            }, { once: true });
+            imageElement.src = images[currentImageIndex];
+            updateButtons();
         }
 
         function updateButtons() {
@@ -217,32 +182,21 @@
         }
 
         function celebrate() {
-            for (let i = 0; i < 50; i++) {
-                createConfetti();
-            }
+            alert("Happy Birthday, Landon! 🎉");
         }
 
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
-            document.body.appendChild(confetti);
+        // Countdown Timer logic
+        const birthdayDate = new Date("2026-09-09"); // Next birthday
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = birthdayDate - now;
+            const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
 
-            setTimeout(() => {
-                confetti.remove();
-            }, 3000);
+            document.getElementById('countdownTimer').innerText = daysLeft;
         }
 
-        function showMessage() {
-            alert("🎉 Thanks for visiting your birthday website, Landon! You're awesome! 🌟");
-        }
-
-        window.onload = function () {
-            updateButtons();
-        };
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
-
 </html>
