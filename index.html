@@ -1,202 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landon's Birthday Website</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #f7f7f7 0%, #e0f7fa 100%);
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 9th Birthday Landon!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #e1f5fe, #fff3e0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        h1 {
-            color: #2196F3;
-            font-size: 3.5em;
-            margin-top: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+      background: #ffffff;
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
 
-        p {
-            font-size: 1.5em;
-            color: #333;
-            margin: 20px 0;
-            line-height: 1.6;
-        }
+    h1 {
+      font-size: 2em;
+      color: #2196F3;
+      margin-bottom: 10px;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
+    p {
+      font-size: 1.2em;
+      color: #333;
+      margin: 10px 0;
+    }
 
-        .image-container {
-            background: white;
-            border-radius: 20px;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 40px auto;
-            max-width: 400px;
-        }
+    .image-box {
+      background: #fff;
+      border-radius: 15px;
+      padding: 10px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-        #landonImage {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+    img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
 
-        #landonImage:hover {
-            transform: scale(1.1);
-        }
+    img:hover {
+      transform: scale(1.03);
+    }
 
-        .button-container {
-            margin: 30px 0;
-        }
+    .buttons {
+      margin-top: 15px;
+    }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 35px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1.5em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .buttons button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin: 5px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        button:hover {
-            background-color: #45a049;
-            transform: scale(1.1);
-        }
+    .buttons button:hover:enabled {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
 
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+    .buttons button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
 
-        .fun-fact {
-            background-color: #FFF3E0;
-            padding: 30px;
-            border-radius: 20px;
-            margin: 40px 0;
-            border: 3px dashed #FF9800;
-            font-size: 1.3em;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
+    .celebrate-btn {
+      background-color: #FF9800;
+      margin-top: 20px;
+    }
 
-        .birthday-countdown {
-            background-color: #FFEB3B;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-size: 1.2em;
-            color: #000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f0f;
+      animation: fall 3s linear infinite;
+      z-index: 9999;
+    }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
 
-            h1 {
-                font-size: 2.5em;
-            }
-
-            p {
-                font-size: 1.2em;
-            }
-
-            button {
-                padding: 12px 25px;
-                font-size: 1.2em;
-            }
-
-            .container {
-                padding: 20px;
-            }
-
-            #landonImage {
-                max-width: 300px;
-            }
-        }
-    </style>
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.6em;
+      }
+      p {
+        font-size: 1em;
+      }
+      .buttons button {
+        font-size: 0.9em;
+        padding: 10px 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday, Landon!</h1>
-        <p>We know your birthday was on the 9th, but we’re still celebrating today, the 12th!</p>
-        
-        <div class="image-container">
-            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Birthday Picture" onclick="celebrate()">
-        </div>
+  <div class="container">
+    <h1>🎉 Happy 9th Birthday, Landon! 🎂</h1>
+    <p>Your birthday was on April 9th — but you're awesome every day!</p>
 
-        <div class="button-container">
-            <button id="prevButton" onclick="changeImage(-1)" disabled>← Previous</button>
-            <button id="nextButton" onclick="changeImage(1)">Next →</button>
-        </div>
-
-        <div class="fun-fact">
-            <p>🎉 Fun Fact: Landon is the coolest! 💥</p>
-        </div>
-
-        <div class="birthday-countdown">
-            <p>🎂 Countdown: Landon’s next birthday is in <span id="countdownTimer"></span> days! 🎉</p>
-        </div>
-
-        <p>Thanks for checking out my birthday page! Keep enjoying the fun, and check back for more updates! 🎈</p>
-        <p>Have a great day, and see you soon! 👋</p>
+    <div class="image-box">
+      <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon's Photo">
     </div>
 
-    <script>
-        // Image change logic
-        let images = [
-            "https://myschief.net/landon.jpg",
-            "https://myschief.net/landon2.jpg",
-            "https://myschief.net/landon3.jpg"
-        ];
-        let currentImageIndex = 0;
+    <div class="buttons">
+      <button id="prevBtn" onclick="changeImage(-1)" disabled>← Previous</button>
+      <button id="nextBtn" onclick="changeImage(1)">Next →</button>
+    </div>
 
-        function changeImage(direction) {
-            const imageElement = document.getElementById('landonImage');
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+    <button class="celebrate-btn" onclick="startConfetti()">🎉 Celebrate!</button>
 
-            imageElement.src = images[currentImageIndex];
-            updateButtons();
-        }
+    <p>Hope you’re having the best day ever. You deserve it, buddy! 🕹️🍰</p>
+  </div>
 
-        function updateButtons() {
-            document.getElementById('prevButton').disabled = currentImageIndex === 0;
-            document.getElementById('nextButton').disabled = currentImageIndex === images.length - 1;
-        }
+  <script>
+    const images = [
+      "https://myschief.net/landon.jpg",
+      "https://myschief.net/landon2.jpg",
+      "https://myschief.net/landon3.jpg"
+    ];
+    let index = 0;
 
-        function celebrate() {
-            alert("Happy Birthday, Landon! 🎉");
-        }
+    function updateImage() {
+      document.getElementById("landonImage").src = images[index];
+      document.getElementById("prevBtn").disabled = index === 0;
+      document.getElementById("nextBtn").disabled = index === images.length - 1;
+    }
 
-        // Countdown Timer logic
-        const birthdayDate = new Date("2026-09-09"); // Next birthday
-        function updateCountdown() {
-            const now = new Date();
-            const timeDifference = birthdayDate - now;
-            const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24));
+    function changeImage(direction) {
+      index += direction;
+      if (index < 0) index = 0;
+      if (index >= images.length) index = images.length - 1;
+      updateImage();
+    }
 
-            document.getElementById('countdownTimer').innerText = daysLeft;
-        }
+    function startConfetti() {
+      for (let i = 0; i < 60; i++) {
+        createConfetti();
+      }
+    }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      confetti.style.animationDuration = (Math.random() * 2 + 1) + "s";
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 3000);
+    }
+
+    window.onload = updateImage;
+  </script>
 </body>
 </html>
