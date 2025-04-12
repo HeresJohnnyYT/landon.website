@@ -1,35 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landon's Website!</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎉 Happy 9th Birthday, Landon! 🎉</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .birthday-container {
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      text-align: center;
+      background: #fff8e1;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      margin: 20px auto;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #ff4081;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      color: #5d4037;
+      margin-bottom: 20px;
+    }
+
+    .image-container {
+      margin: 0 auto 20px;
+    }
+
+    #landonImage {
+      width: 90%;
+      max-width: 300px;
+      border-radius: 15px;
+      border: 4px solid #ffb74d;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .celebrate-button {
+      background: #ff7043;
+      color: #fff;
+      font-size: 1.2em;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 30px;
+      margin: 20px 0;
+      cursor: pointer;
+      width: 80%;
+      max-width: 300px;
+      transition: background 0.3s ease;
+    }
+
+    .celebrate-button:hover {
+      background: #f4511e;
+    }
+
+    .button-container {
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 0 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .footer-text {
+      font-size: 1em;
+      color: #5d4037;
+      margin-top: 20px;
+    }
+
+    /* Confetti Effect */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f0f;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .subtitle {
+        font-size: 1em;
+      }
+
+      button {
+        padding: 10px 20px;
+      }
+
+      #landonImage {
+        width: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="animate__animated animate__bounceIn">Welcome to Landon's Website!</h1>
-        
-        <p class="animate__animated animate__fadeIn">Hi! I'm Landon, 8 years old, and I'm excited to share my creativity with you! 🌟</p>
-        
-        <div class="image-container">
-            <img id="landonImage" src="https://myschief.net/landon.jpg" alt="A picture of Landon" onclick="celebrate()">
-        </div>
-        
-        <div class="button-container">
-            <button id="prevButton" onclick="changeImage(-1)" disabled>← Previous</button>
-            <button id="nextButton" onclick="changeImage(1)">Next →</button>
-        </div>
+  <div class="birthday-container">
+    <h1 class="animate__animated animate__bounce">🎂 Landon Turns 9! 🎉</h1>
+    <p class="subtitle">You're the star today! Tap below to celebrate 🎈</p>
 
-        <div class="fun-fact">
-            <p>🎮 Press the 'E' key for a surprise message!</p>
-        </div>
-
-        <p>Thanks for checking out my page! I'll keep adding more pictures and things! 😊</p>
-        <p>Have a great day, and see you soon! 👋</p>
+    <div class="image-container">
+      <img id="landonImage" src="https://myschief.net/landon.jpg" alt="Landon" />
     </div>
 
-    <script src="script.js"></script>
+    <button class="celebrate-button" onclick="celebrate()">🎊 Tap to Celebrate 🎊</button>
+
+    <div class="button-container">
+      <button id="prevButton" onclick="changeImage(-1)" disabled>←</button>
+      <button id="nextButton" onclick="changeImage(1)">→</button>
+    </div>
+
+    <p class="footer-text">Have fun bouncing, birthday champ! 🛝🎉</p>
+  </div>
+
+  <script>
+    // Array of image URLs
+    let images = [
+      "https://myschief.net/landon.jpg",
+      "https://myschief.net/landon2.jpg",
+      "https://myschief.net/landon3.jpg"
+    ];
+
+    let currentImageIndex = 0;
+    let isAnimating = false; // Prevent multiple animations
+
+    // Preload images
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    function changeImage(direction) {
+      // Prevent a new animation if one is already running
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const imageElement = document.getElementById('landonImage');
+      // Calculate the new index
+      currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+
+      // Start fade-out animation
+      imageElement.classList.add('animate__animated', 'animate__fadeOut');
+
+      // When fade-out completes, update the image and fade it in
+      imageElement.addEventListener('animationend', function handleFadeOut() {
+        imageElement.removeEventListener('animationend', handleFadeOut);
+        imageElement.classList.remove('animate__fadeOut');
+        imageElement.src = images[currentImageIndex];
+        updateButtons();
+
+        // Start fade-in animation
+        imageElement.classList.add('animate__fadeIn');
+        imageElement.addEventListener('animationend', function handleFadeIn() {
+          imageElement.removeEventListener('animationend', handleFadeIn);
+          imageElement.classList.remove('animate__animated', 'animate__fadeIn');
+          isAnimating = false;
+        }, { once: true });
+      }, { once: true });
+    }
+
+    function updateButtons() {
+      document.getElementById('prevButton').disabled = currentImageIndex === 0;
+      document.getElementById('nextButton').disabled = currentImageIndex === images.length - 1;
+    }
+
+    function celebrate() {
+      for (let i = 0; i < 50; i++) {
+        createConfetti();
+      }
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000); // Remove confetti after it falls
+    }
+  </script>
 </body>
 </html>
